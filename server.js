@@ -23,7 +23,7 @@ createArtist = require('./backend/uploaders/createArtist');
 createAlbum = require('./backend/uploaders/createAlbum');
 createTrack = require('./backend/uploaders/createTrack');
 const app = express()
-app.use(express.static(__dirname))
+app.use(express.static(__dirname+'/app/'))
 app.use(bodyParser.json());
 
 
