@@ -1,0 +1,55 @@
+<div class="catalogContainer">
+
+	<div class="headColumns">
+		<div class="headContainer" ng-show="!newPostClick">
+				<div ng-click="newPostClick=!newPostClick"  class="makeNewPost">
+					Make New Thread
+				</div>
+		</div>
+		<div ng-show="newPostClick" class="newPostContainer">
+			<mx-new-post></mx-new-post>
+		</div>
+	</div>
+
+
+	<div class="centerCatalog">
+			<ul class="catalogThreads">
+				
+
+
+
+				<!-- <div class="threadDisplay" ng-repeat="thread in threads | orderBy: 'datesortMain' : true" ng-init="image=thread.OPID"> -->
+				<div class="threadDisplay" ng-repeat="thread in threads | orderBy:SortFunctionTest : true" ng-init="image=thread.OPID">
+					<mx-thread-preview thread={{thread}}></mx-thread-preview>
+				</div>
+
+
+				<!-- <div ng-repeat="thread in threads" ng-init="image=thread.OPID">
+					
+					ATTRIBUTE USE - > put thread ID into that ID
+					GET IN SCOPE...
+					<mx-thread-preview id=""></mx-thread-preview>
+				
+				</div> -->
+
+
+			</ul>
+	</div>
+
+</div>	
+
+
+<!-- the reason this is working is that it is being called ON THE PAGE HERE, the function itself is firing early... -->
+<!-- <h1>CANVAS TEST: only switching the THREADS that are used</h1>
+
+<span ng-repeat="thread in threads">
+			<mx-canvas-test canvasid="{{thread.OPID}}" param-one={{thread.move_1}} param-two={{thread.move_2}}>
+			</mx-canvas-test>
+</span> -->
+
+
+<!-- 
+<span ng-repeat="thread in threads">
+<mx-canvas-bot canvasid="{{thread.OPID}}" cbgc="{{thread.posts[0].cBGC}}" param-one={{thread.posts[0].cParam1}} param-two={{thread.posts[0].cParam2}} param-three={{thread.posts[0].cParam3}} param-four={{thread.posts[0].cParam4}} param-five={{thread.posts[0].cParam5}} crepone={{thread.posts[0].cRep1}} creptwo={{thread.posts[0].cRep2}} cparamaddone={{thread.posts[0].cParamAdd1}} cparamaddtwo={{thread.posts[0].cParamAdd2}} width={{120}} height={{120}}>
+			</mx-canvas-bot>
+			</span> -->

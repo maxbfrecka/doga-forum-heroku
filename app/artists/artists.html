@@ -1,0 +1,11 @@
+<h1>Artists!!!</h1>
+
+
+
+
+<div ng-repeat="artist in artists">
+	<a href="/app/#/artists/{{artist.artistName | removeSpacesThenLowercase}}">
+	<h1>{{artist.artistName}}</h1>
+
+	<img src="/../backend/file-system/artists/{{artist.artistImage}}">
+</div>

@@ -1,0 +1,652 @@
+body {
+	background-color:yellow;
+}
+
+/*to make navbar skinnier*/
+/*.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
+.navbar {min-height:40px !important}*/
+
+li.active {
+    color:purple;
+}
+
+li#navbar_links {
+    border-radius: 20px;
+    color:blue;
+    font-size:18px;
+}
+.viewContent {
+}
+
+/*remove position fixed if return to prior state*/
+.navbarMargin {
+    margin-top:10px;
+/*  position: fixed;
+    z-index:1;*/
+}
+
+.navbar-brand {
+    font-size:20px;
+}
+
+.navbar-controller {
+    min-width: 1000px;
+}
+
+.navbar-default {
+  padding:0px;
+  margin: 0 0 3px 0;
+  background-color: red;
+  border-radius: 25px;
+  max-height:0em;
+}
+
+
+.mainContainer {
+	margin-left:30px;
+	margin-top:20px;
+}
+
+.headColumns {
+	margin-top:10px;
+    margin-bottom:20px;
+	text-align:center;
+}
+
+.headContainer{
+	margin-top:30px;
+	padding:5px;
+	margin-bottom:5px;
+	display:inline-flex;
+	border-radius:10px;
+	text-align:center;
+	margin:0 auto;
+}
+
+.makeNewPost {
+    background-color:#11fb19;
+    color:grey;
+	padding-top:10px;
+    padding-bottom:40px;
+	font-size: 19px;
+	height:59px;
+	width:260px;
+    border-color:#1a75ff;
+    border-width:0px;
+    border-style:solid;
+	margin-bottom:5px;
+	border-radius:10px;
+}
+
+.makeNewPost:hover{
+	cursor: pointer;
+    color:grey;
+    background-color:#1a75ff;
+}
+
+.newPostContainer{
+	margin-top:14px;
+	margin-left:30px;
+	margin-right:30px;
+
+}
+
+
+.catalogContainer {
+	text-align:center;
+	width:97%;
+	min-width:1200px;
+    max-width:1400px;
+	position:relative;
+	padding:10px;
+	box-sizing: border-box;
+	margin: auto 0;
+	background: #090d13;
+	border-radius:20px;
+}
+
+ul.catalogThreads {
+    display:block;
+	margin-right:40px;
+    
+
+
+	/*
+    -moz-column-count: 4;
+    columns:4;
+    column-gap:0px
+	column-fill:balance;
+	column-rule:3px;
+	column-rule: 1px dotted black;*/
+
+
+}
+
+.threadDisplay {
+    vertical-align: top;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+}
+
+/*#previewLink {
+    color:black;
+}
+#previewLink:hover {
+    color:grey;
+}*/
+
+
+.threadPreview {
+	background-color: white;
+	width:250px;
+	height:250px;
+	min-width:250px;
+	min-height:250px;
+	margin:19px;
+	border-style:solid;
+	border-width:2px;
+/*	border-color:grey;
+*/	display:inline-block;
+	outline:0px;
+	border-radius: 18px;
+    position: relative;
+}
+
+.threadPreview:hover{
+    background-color: #fff94d;
+}
+
+.previewTag {
+    font-size: 17px;
+}
+
+
+.threadPreview .threadPreviewTooltip {
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -5px;
+    left: 105%; 
+}
+
+.replyCount {
+    color:black;
+    font-size: 12px;re
+}
+
+
+.threadPreviewContent {
+	padding:15px;
+
+}
+
+.previewTitle {
+	font-size:20px;
+}
+
+.previewPostTime {
+	font-size:15px;
+  color:rgb(23, 25, 28);
+  background-color:rgb(248, 255, 251);
+}
+
+.previewAuthor {
+    color:grey;
+}
+
+.summaryContainer {
+	text-align:center;
+	margin:0 auto;
+	padding:5px;
+}
+
+.previewSummary {
+    font-size:11.5px;
+	width:200px;
+	padding:3px;
+	background-color:lightgrey;
+    font-color:black;
+/*    white-space:nowrap;
+    word-wrap: break-word;
+    overflow: hidden;
+    text-overflow: ellipsis;*/
+    max-height:100px;
+
+
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.previewAuthor {
+	font-size:11px;
+}
+
+.textEntry {
+	width:400px;
+	height:150px;
+	max-width: 400px;
+	max-height:150px;
+	padding:10px;
+}
+
+.newPost {
+	width:500px;
+	height:200px;
+	background-color:lightgrey;
+	padding:20px;
+	border-style:solid;
+	border-color:yellow;
+	margin:10px;
+}
+
+.submitPost {
+	float:right;
+}
+
+
+
+
+
+
+
+#post-table{
+    position: relative;
+    width: 95%;
+    background: #090d13;
+    margin: 0 auto;
+    margin-top:20px;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+#post-table form:after{
+    margin: 0;
+    content: '';
+    display: block;
+    clear: both;
+    padding:10px;
+}
+
+input[type="text"]{
+    width: 70%;
+    height: 120px;
+    padding: 20px;
+    background:#181c22;
+    border: 0;
+    float: left;
+    font-size: 20px;
+    color: #989898;
+}
+
+textarea#replyThread {
+    width: 70%;
+    height: 120px;
+    padding:20px;
+    background:#181c22;
+    border:0;
+    float:left;
+    font-size: 20px;
+    color: #989898;
+    resize: vertical;
+}
+
+button{
+    padding: 20px;
+    height:60px;
+    width: 30%;
+    float: left;
+    background: #23282e;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+input#imageupload{
+    padding: 20px;
+    height:60px;
+    width: 30%;
+    float: left;
+    background: #23282e;
+    border: 0;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+button#uploadimage{
+    border-bottom: 2px;
+    border-color: 'grey';
+}
+
+div.post {
+    border-radius: 25px;
+    color:rgb(10, 20, 18);
+    font-size:44px;
+}
+
+div.posts{
+    list-style-type: none;
+    padding: 7px;
+    margin: 0;
+}
+
+blockquote.postMessage{
+    display:block;
+    background-color:white;
+    white-space: pre-wrap;
+    margin-bottom: 7px;
+}
+
+#replyUsername {
+    font-size:12px;
+    color:lightgrey;
+    background-color:rgb(248, 255, 251);
+}
+
+.postImage {
+	display:block;
+}
+
+div.post{
+    width: 100%;
+    padding: 8px;
+    margin: 1px 1px 20px 10px;
+    box-sizing: border-box;
+    font-family: arial;
+    font-size: 20px;
+    background-color:white;
+    letter-spacing: 1px;
+}
+
+div.post:hover{
+    background-color: rgb(255, 248, 255);
+    color:rgb(20, 27, 15);
+}
+
+span#time{
+    font-size:15px;
+    color:rgb(23, 25, 28);
+    background-color:rgb(248, 255, 251);
+}
+
+.browseContainer{
+    width: 90%;
+    background-color: #fff94d;
+    margin:30px;
+}
+
+.albumPreview {
+    background-color:red;
+    max-width:400px;
+}
+
+
+
+.form-control {
+  display: block;
+  width: 100%;
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  margin: 10px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+          box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+          transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+
+.musicPlayerBar {
+    background-color:#fff94d;
+    margin-top:10px;
+    margin-bottom:19px;
+    padding:3px;
+    padding-left:50px;
+}
+
+
+.musicControllerContainer{
+    max-width:40%;
+    min-width:420px;
+    background-color:yellow;
+    margin-left:20px;
+    margin: 0 auto;
+    text-align: center;
+    height:70px;
+    padding:2px;
+    display:inline-block;
+    margin-right:40px;
+    float:left;
+}
+
+.musicButtonsContainer{
+    display:inline-block;
+    float:left;
+}
+
+.audioButton {
+    font-size:12px;
+    width:80px;
+    height:50px;
+    margin:3px;
+    padding:3px;
+}
+
+.playButton {
+    font-size:20px;
+}
+
+.musicVolumeContainer{
+    margin:10px;
+    display:inline-block;
+}
+
+.volumeSlider {
+    display:inline-block;
+}
+
+
+
+
+
+.musicPlayerContainer{
+    margin-left:20px;
+    max-width:50%;
+    min-width:50%;
+    background-color:yellow;
+    margin: 0 auto;
+    text-align: center;
+    height:70px;    
+    padding:2px;
+    display:inline-block;
+}
+
+.musicPlayerArtIconContainer {
+    margin:2px;
+    margin-top:4px;
+    margin-right:8px;
+    padding:3px;
+    background-color:white;
+    display:inline-block;
+}
+
+.musicPlayerAlbumArtIcon {
+    height:50px;
+    width:50px;
+    display:inline-block;
+}
+
+.musicPlayerTimeContainer {
+    min-width:80%;
+    max-width: 80%;
+    height:40px;
+    background-color:white;
+    margin: 0 auto;
+    text-align: center;
+    display:inline-block;
+}
+
+.timeDisplayContainerCurrent {
+    columns: 3;
+    padding:5px;
+    margin:4px;
+    width:30px;
+    height:30px;
+    display:inline-block;
+}
+
+.timeDisplayContainerRemaining {
+    padding:5px;
+    margin:4px;
+    width:30px;
+    height:30px;
+    display:inline-block;
+}
+
+.timeRangeContainer {
+    min-width:60%;
+    padding:5px;
+    display:inline-block;
+}
+
+.musicPlayerCurrentTimeDisplay {
+}
+
+.musicPlayerTimeRange {
+}
+
+.musicPlayerRemainingTimeDisplay {
+}
+
+.nowPlayingData {
+    background-color:red;
+}
+
+a.musicPlayerDataLink {
+    color:black;
+}
+a.musicPlayerDataLink:hover {
+    color:black;
+    text-decoration:none
+}
+a.musicPlayerCoverLink {
+    color:black;
+}
+a.musicPlayerCoverLink:hover {
+    color:black;
+    text-decoration:none
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.footerContainer{
+    text-align: center;
+    margin:auto 0;
+    max-height: 3%
+
+}
+
+.footer {
+    color:red;
+    columns:3;
+    column-gap:40px;
+    margin-top:10px;
+    margin-bottom:10px;
+    margin-left:259px;
+    position:relative;
+    bottom:0;
+    width:60%;
+    height:20px;
+    background-color:#ffff1a;   /* Height of the footer */
+}
+
+
+
+
+
+.createAlbumContainer{
+    padding:20px;
+    margin:40px;
+    background-color: #ffff1a;
+    display:inline-block;
+}
+
+.albumEditForm{
+    padding:20px;
+    margin:20px;
+    background-color: #fff94d;
+    display:inline-block;
+}
+
+.albumEditImageButton{
+    float:left;
+    display:inline-block;
+}
+
+.albumEditName{
+    float:left;
+    display:inline-block;
+}
+
+.albumEditSubmit{
+    float:left;
+    display:inline-block;
+}
+
+.addNewTrack{
+    float:left;
+    display:inline-block;
+}
+
+.albumEditAddTrackFile {
+    float:left;
+    display:inline-block;
+}
+
+.albumEditAddTrackName {
+    float:left;
+    display:inline-block;
+    max-height: 60px
+}
+
+
+

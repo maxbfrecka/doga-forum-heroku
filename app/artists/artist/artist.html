@@ -1,0 +1,19 @@
+<h1>CURRENT ARTIST</h1>
+	
+	<p>{{currentArtist.artistName}}</p>
+
+	<img src="/../../backend/file-system/artists/{{currentArtist.artistImage}}">
+
+<br>
+
+<h2>Albums</h2>
+
+	<div ng-repeat="album in albums">
+	<a class="artistDetailAlbumLink" href="/app/#/artists/{{currentArtist.artistName | removeSpacesThenLowercase}}/{{album.albumName | removeSpacesThenLowercase}}">
+		<h3>{{album.albumName}}</h3>
+		<img src="/../../backend/file-system/artists/{{album.albumArt}}">
+	</a>
+	</div>
+
+
+<button ng-click="setAlbumArtistEdit(currentArtist.artistName)">Add an Album</button>

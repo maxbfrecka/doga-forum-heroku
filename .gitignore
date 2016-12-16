@@ -1,0 +1,4 @@
+app/assets/testAudio/
+backend/file-system/
+node_modules/
+app/bower_components

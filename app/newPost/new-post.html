@@ -1,0 +1,14 @@
+<form name="newThreadForm" ng-submit="vm.newThread(send)">
+	<fieldset>
+			<textarea id="replyThread" name="thread" type="text" ng-model="send.thread" required></textarea>
+
+			<!-- <input type="file" id="imageupload" class="filestyle" accept="image/gif, image/jpeg, image/png" data-classButton="btn btn-primary" data-input="false" data-buttonText="Upload Image" data-buttonBefore="false"> -->
+
+
+			<button id="imageupload" type="button" ng-click="newPostClickImage=!newPostClickImage" ng-show="!newPostClickImage">Add Image</button>
+			<input type="text" id="imageupload" class="filestyle" ng-show="newPostClickImage" placeholder="Paste image URL" ng-model="vm.sendImage">
+
+			<button id="submitpost" type="submit">Submit Thread</button>
+
+	</fieldset>
+</form>

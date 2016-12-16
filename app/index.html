@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='en' ng-app="myApp">
+<head>
+	<meta charset='UTF-8' />
+	<title>Capstone Draft</title>
+	<link rel="stylesheet" type="text/css" href="./bower_components/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" type="text/css" href="./bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="./assets/style.css" />
+
+</head>
+
+
+<body>
+
+<div class="navbarMargin">
+	<div class="navbar-controller">
+		<nav class="navbar navbar-default">
+		  <div class="container-fluid">
+		    <div class="navbar-header">
+		      <a class="navbar-brand" href="/app/#/">MX-FORUM</a>
+		    </div>
+		    <ul class="nav navbar-nav">
+		      <li id="navbar_links" class="active"><a href="/app/#/catalog">CATALOG</a></li>
+		      <li id="navbar_links" class="active"><a href="/app/#/browse/">BROWSE</a></li>
+		      <li id="navbar_links" class="active"><a href="/app/#/artists/">ARTISTS</a></li>
+		     <!--  <li id="navbar_links" class="active"><a href="/app/#/library/">LIBRARY</a></li> -->
+		      <li id="navbar_links" class="active"><a href="/app/#/createArtist/">CREATE ARTIST</a></li>
+		      <li id="navbar_links" class="active"><a href="/app/#/login/">LOG IN / SIGN UP</a></li>
+		    </ul>
+		  </div>
+		</nav>
+	</div>
+</div>
+
+<div class="musicPlayerBar">
+	<mx-music-controller></mx-music-controller>
+</div>
+
+	<div class="viewContent">
+		<div ng-view></div>
+	</div>
+
+
+  
+
+		
+	
+
+	<div class="footerContainer">
+		<div class="footer">
+			<div class="footer1">contact: maxbfrecka@gmail.com</div>
+			<div class="footer1">contact: maxbfrecka@gmail.com</div>
+			<div class="footer1">contact: maxbfrecka@gmail.com</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+<!-- activate to view the chat box draft -->
+<!-- <chat-box></chat-box>-->
+<!-- activate to view the JSON database object -->
+<!--<div ng-controller="myController as fm"> {{fm.data | json}}</div> -->
+
+
+	<script src="./bower_components/angular/angular.js"></script>
+	<script src="./bower_components/angular-route/angular-route.js"></script>
+	<script src="./bower_components/angular-animate/angular-animate.js"></script>
+	<script src="./bower_components/angularfire/dist/angularfire.min.js"></script>
+	<script src="./bower_components/firebase/firebase.js"></script>
+	<script src="./bower_components/angular-audio/app/angular.audio.js"></script>
+	<script src="./bower_components/ng-file-upload/ng-file-upload.js"></script>
+
+	<script src="../node_modules/lodash/lodash.js"></script>
+
+
+	<script src="./app.js"></script>
+	<script src="./catalog/catalog.js"></script>
+	<script src="./thread/thread.js"></script>
+	<script src="./thread/newReply/new-reply.js"></script>
+	<script src="./catalog/threadPreview/thread-preview.js"></script>
+	<script src="./newPost/new-post.js"></script>
+	<script src="./views/views.js"></script>
+	<script src="./app.js"></script>
+	<script src="./rID/rID.js"></script>
+	<script src="./canvasBot/canvas-bot.js"></script>
+	<script src="./canvastest/canvas-test.js"></script>
+	<script src="./browse/browse.js"></script>
+	<script src="./musicPlayer/musicPlayer.js"></script>
+	<script src="./musicPlayer/musicController.js"></script>
+	<script src="./albumPreview/albumPreview.js"></script>
+	<script src="./albumDetail/albumDetail.js"></script>
+	<script src="./library/library.js"></script>
+	<script src="./createAlbum/createAlbum.js"></script>
+	<script src="./login/login.js"></script>
+	<script src="./signUp/signUp.js"></script>
+	<script src="./createArtist/createArtist.js"></script>
+	<script src="./artists/artists.js"></script>
+	<script src="./artists/artist/artist.js"></script>
+
+	<script type="text/javascript" src="firebase.config.js"></script>
+
+
+	<script src="./assets/randomizer.js"></script>
+	<script src="./assets/dateMaker.js"></script>
+
+</body>
+</html>

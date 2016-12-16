@@ -1,0 +1,36 @@
+<div class="myLibraryContainer">
+	
+<h1>Artists</h1>
+	<ul ng-repeat="artist in artists | orderBy: 'artist'">
+		<li ng-click="selectArtist(artist)">{{artist.artist}}</li>
+	</ul>
+
+<h1>Albums</h1>
+	<ul ng-repeat="album in albums | orderBy: 'album'">
+		<li ng-click="selectAlbum(album)">{{album.albumTitle}}</li>
+	</ul>
+
+
+<!-- add duration -->
+<h1>Tracks</h1>
+	<table>
+		<tr>
+			<th>Track Name</th>
+			<th>Artist</th>
+			<th>Album</th>
+			<th>Track #</th>
+		</tr>
+		<tr ng-repeat="track in currentTracks | orderBy: ['artistTitle','albumTitle','trackNumber']">
+			<td>{{track.trackTitle}}</td>
+			<td>{{track.artistTitle}}</td>
+			<td>{{track.albumTitle}}</td>
+			<td>{{track.trackNumber}}</td>
+		</tr>
+	</table>
+
+
+
+
+
+
+</div>

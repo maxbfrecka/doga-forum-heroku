@@ -1,0 +1,23 @@
+<div class="browseContainer">
+
+	<div class="browseRepeat" ng-repeat="artist in bc.artists">
+		<div ng-repeat="album in artist.albums">
+			{{album.albumTitle}}
+			<mx-album-preview album-title="{{album.albumTitle}}" album="{{album}}" artist={{artist}} artist-name={{artist.artist}} album-cover="{{album.albumCover}}" tracks="{{album.tracks}}"></mx-album-preview>
+		</div>
+	</div>
+
+		 
+
+		
+
+
+
+
+
+
+
+
+
+	
+</div>

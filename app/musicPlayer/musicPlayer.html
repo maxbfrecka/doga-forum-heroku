@@ -1,0 +1,26 @@
+<div class="musicPlayerContainer">
+
+		<div class="musicPlayerArtIconContainer">
+			<img class="musicPlayerAlbumArtIcon" src="https://f4.bcbits.com/img/a1946274968_10.jpg">
+		</div>
+
+		<div class="musicPlayerTimeContainer">
+
+			<div class="timeDisplayContainerCurrent">	
+				<div class="musicPlayerCurrentTimeDisplay">{{pc.audioTest.currentTime | trackTime}}</div>
+			</div>
+
+			
+			<div class="timeRangeContainer">
+				<input class="musicPlayerTimeRange" type="range" step="1" max="{{pc.audioTest.duration}}" ng-model="pc.audioTest.currentTime">
+			</div>
+			
+			<div class="timeDisplayContainerRemaining">
+				<div class="musicPlayerRemainingTimeDisplay">{{pc.audioTest.remaining | trackTime}}</div>
+			</div>
+			
+		
+
+		</div>
+
+</div>

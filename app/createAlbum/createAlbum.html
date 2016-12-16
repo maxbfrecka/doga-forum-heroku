@@ -1,0 +1,46 @@
+<div class="createAlbumContainer">
+
+<form class="albumEditForm" name="form">
+
+			<h1>Add Album:</h1>
+
+			<h2>{{artistEditName}}</h2>
+
+			<!-- album name -->
+			<input type="text" class="albumEditName" placeholder="Album Name" ng-model="albumName" required>
+
+
+			<div ng-repeat="track in tracks">
+
+		    <input type="text" class="albumEditAddTrackName" placeholder="Track Name" ng-model="track.trackName" required>
+
+				<button class="button albumEditAddTrackFile" ngf-select ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'"
+		    ngf-accept="'audio/wav'" ngf-max-size="100mb">Choose Wav</button>
+	    </div>
+
+
+
+
+
+	    <!-- album art add -->
+	    <button class="button albumEditImageButton" ngf-select ng-model="albumImageFile" name="albumImage" ngf-pattern="'image/*'"
+	    ngf-accept="'image/*'" ngf-max-size="30MB" ngf-min-height="10" 
+	    ngf-resize="{width: 300, height: 300}">Choose Album Cover</button>
+
+	    <button class="addNewTrack" ng-click="addNewTrack()">Add New Track</button>
+
+
+	    <!-- submit -->
+			<button class="albumEditSubmit" type="submit" ng-click="submitAlbum()">Submit</button>
+
+
+
+
+
+
+</form>
+
+
+<br>
+<br>
+</div>

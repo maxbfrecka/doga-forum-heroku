@@ -1,0 +1,23 @@
+
+
+<div class="albumPreview">
+
+	<a id="albumLink" href="#/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
+		<div class ="albumPreviewData">
+			<h1>title: {{albumTitle}}</h1>
+
+			<h2>artist: {{artistName}}</h2>
+
+			<img src="{{albumCover}}" width=100 height=100>
+		</div>
+	</a>
+
+	<div class="albumPreviewControls">
+		<span ng-click="addAlbum(artistName, albumTitle)">Add to Library</span>
+		<span ng-click="playAlbum()">Play Album</span>
+		<span>Plan Random Track</span> <!-- creates temporary array of album with tracks in random order -->
+	</div>
+
+
+</div>
+

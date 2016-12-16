@@ -1,0 +1,49 @@
+
+DATA-SCHEMA for **SENDING** CANVAS INFO IN THREAD POSTS:
+{
+	canvasBGC: rgbtohex(randomRGBcolor())
+
+
+
+
+}
+
+
+
+
+
+FUNCTION PLANNING:
+
+width=
+height=
+
+
+PART1:
+calculate every point that will be input into canvas (go through function and calc)
+
+check to make sure < width
+check to make sure < height
+
+if < enlarge to fit (if -> then -> else)
+if > make smaller to fit (if -> then -> else)
+
+NEXT:
+execute the canvas draw function
+
+
+
+
+
+
+
+
+
+
+param1=20
+param2=30
+param4=20
+param5=60
+param6=15
+param7=40
+param9=30
+param10=

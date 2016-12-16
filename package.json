@@ -1,0 +1,35 @@
+{
+  "name": "angular-capstone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "karma.conf.js",
+  "scripts": {
+    "test": "mocha",
+    "postinstall": "bower install"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bower": "^1.8.0",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "connect": "^3.5.0",
+    "connect-multiparty": "^2.0.0",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.2",
+    "mkdirp": "^0.5.1",
+    "mkdirp-promise": "^5.0.0",
+    "mocha": "^3.2.0",
+    "mongoose": "^4.7.2",
+    "multer": "^1.2.0",
+    "multiparty": "^4.1.2",
+    "mv": "^2.1.1",
+    "uuid": "^3.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
+  }
+}

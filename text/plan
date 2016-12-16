@@ -1,0 +1,1186 @@
+-fix track uploader for multiple tracks
+-playback system fixed
+-queue system fixed
+-click album works like play button
+- deploy
+
+---> unfortunately heroku is a PoS
+-did a "post install" for bower stuff ... in the json file
+-I have no idea why this isn't working
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+need Mongoose to:
+-return artistID (already know how)
+-return the albumId for a particular album...
+
+so go to that artist, then go to that album
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+question: how to do track by track upload system!
+just a basic system... not complicated yet
+
+
+-add artist image
+-album title (form)
+
+TRACK UPLOAD SYSTEM:
+-name track
+-add file
+
+should have option to add another!
+
+
+on submit: 
+
+
+
+
+
+
+
+add an album title
+add a track
+
+"click to add a track":
+
+gives a form: name track (required)
+select file (required)
+track will upload instantly?
+
+BACKEND:
+-will PUT track in that album as trackNumber = 1
+
+
+and then it will create another identical form beneath
+
+
+
+submit = PUT ALBUM
+cancel = DELETE that album
+
+
+
+on submit, creates album folder along with wav/mp3 folders
+
+
+->add track, grabs wav file
+
+tracks = []
+
+click add track...
+
+
+-add track, adds file immediately, create an untilted track
+-
+
+
+the question is, how do the ng-model work to get it onto each particular track
+in the NG repeat
+I'd like to put it into the array!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---> change browseTestData! and most of it will continue to function
+---> each track will provide a PATH... which the audioplayer uses
+how is the path constructed?
+for now, the path will be stored as:
+
+:artistname/:albumname/:trackname.wav
+how will I turn wav/aif into 320 mp3 for serving?
+the path is how we will retrieve the file
+
+on submit, the server must create a folder for the artist (if one does not exist yet) and create a folder for the album (if one does not exist yet)
+next it will create a folder for the filetype (wav) and save the files
+
+first check if that folder is there, if it is, add a folder for that album
+
+-saving the file itself through the upload into the right path
+-adding to the database
+
+browser will use the database to display the album
+player will use the database to retrieve the file itself by grabbing the path
+
+-can't really do it unless the database is ready to go
+-can't really do it unless the file write structure is ready
+-can't really do it unless the upload page structure is ready
+
+add artist: artist name, artist picture (genre later)
+add album: album name, album cover art upload
+add track: upload it name it
+next track add:
+
+input field: write the track name
+
+when you are done, press submit -> adds to the database
+
+
+
+
+
+
+
+GOAL0: create artist!
+-create an artist, adds to database artist object
+-uploads image
+-creates folder with artist name
+
+
+GOAL1: upload a file and save it into:
+
+banzaei/downside-up/wav/ + trackname
+
+and then it convert to mp3 and save that in banzaei/downside-up/mp3/
+
+
+
+
+artist collection schema:
+
+.artists = [
+	{
+	artistName: ,
+	userName: ,
+	artistId: ,
+	artistBio: ,
+	artistImage: ,
+	artistGenre: ,
+	albums: [
+		{
+		albumName: ,
+		albumId: ,
+		albumArt: ,
+		albumArtist: ,
+		albumUserName: ,
+		albumGenre: ,
+		dateCreated: ,
+		timeLength: ,
+		tracks: [
+			{
+			trackName: ,
+			trackNumber: ,
+			trackId: ,
+			trackArtist: ,
+			trackUserName: ,
+			trackAlbum: ,
+			trackGenre: ,
+			trackWavSource: ,
+			trackMp3Source: 
+			}
+		]
+		}
+	]
+	}
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-
+
+
+
+
+
+
+(directives for use in browse window:)
+ALBUM-PREVIEW:
+-album art
+-artist name
+-optional promotional "sticker"
+-friend critic score
+
+ARTIST-PREVIEW:
+-artist picture
+-friended critics who follow them
+
+
+
+
+
+-ARTIST PAGE:
+-top five tracks (artist can choose to display most listened to or his favorites)
+-releases
+-cool bio if wanted
+-promo image
+-merch
+-similar artists
+
+ALBUMS on artist page: when click an album the album page display disappears and shows just that album with the tracks which you can click to play or add to playlist... also can show connected discussions, critique, and friends etc
+
+:at the bottom of the page: critics, discussion, and general activity about the artist/albums
+
+
+
+
+
+
+
+
+
+CRITIC:
+shows reviews of releases by artists (stripped down RYM)
+
+ACCOUNT PAGE:
+-artist name: ()
+
+SOCIAL SYSTEM:
+-critic: SN
+-artist: artist name
+-commune: can be anonymous or otherwise
+-social: more focused on IRL side (live shows etc)
+
+FRIEND SYSTEM:
+-read critic reviews and then add people who you like
+-when you follow someone you get their critic activity on your feed?
+-see the albums they like and it can recommend you automatically at the top of your browse page
+
+
+
+
+sit down, log in... goes to home page:
+-album collection, click "play" on the album and it enlarges the album view
+-begins playing album in music player
+-can add and remove from playlist
+
+
+WEBSITE SETTINGS:
+
+ACCOUNT SETTINGS:
+
+ARTIST PAGE:
+-upload music
+-customize album page
+-customize your artist page
+
+ACCOUNT LIBRARY:
+-every account has personal library
+-displays in page like browser with all artists/albums/songs
+-can play music from there by double clicking
+
+
+
+
+current goals:
+-make an albumPreview directive (copy a lot from the catalog area)
+-make an album page directive
+-make a simple music player
+-get music to display properly
+-when one song ends, play the next one
+-add song to a playlist
+-remove song from a playlist
+-remove multiple songs by clicking and dragging
+
+(directive)
+MUSICPLAYER:
+-shows current song
+-shows small album art icon
+-time bar
+-time displays
+MUSICCONTROLLER:
+-play
+-volume
+-back/forward
+
+
+
+
+
+
+
+
+
+-go to next track -> goes to next track
+-go to last track -> if currentTime >3 seconds, goes to last track
+-
+
+
+
+-now playing list... when click to play a song, adds to a list
+-when album is done playing, goes to next album page in list and plays...
+-if no more albums in artist list, goes to another artist!
+
+-when ppl upload files, remove spaces
+-when presses play, audio pauses or plays
+
+
+
+
+IF LOGGED IN: can add to playlist, can add to library,
+
+
+
+-add 1 to all array info to get proper track # rep
+-get album length and store in a variable inside factory
+-store current track # in a variable by searching array and returning the number that it's at any time the track changes
+-check if current track === length of array (if it does, then don't do anything at end ... yet)
+-if it gets to end, set nowPlayingList.nowPlayingTrack to the next track in the array
+
+
+
+-click now playing album icon/or song data to go to album page
+-play random track from browse page (make 'noise' icon)
+-add album to library from browse page
+-column browser, library
+-spacebar controls the pause button
+-now playing icon next to currently playing song
+-list other albums by artist at bottom of album detail view
+
+
+
+-how to add songs to library......
+->click to add album (adds songs that aren't added)
+->click to add song (if already in, won't add)
+->gets the album object and artist object and adds all the tracks
+
+
+
+myLibrary:
+-loads the whole library
+-ng-repeat into a table... artists, albums, tracks at bottom
+-click artist to only show those albums, and then only show tracks in albums shown
+
+
+library = array of artists
+
+
+addToLibrary: takes that album, gets the artist name and adds to array as artistname, adds album to albums part of that array (With tracks etc)
+-for artist already in there: searches to see if that artist is already there, if so returns that and adds album to that part
+-if album already there, 
+
+artists: artists in library
+
+albums: albums in artists
+
+tracks: ng-repeat tracks in albums
+
+
+
+
+add:
+-needs to check if data is in the library
+-
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-finish album uploader!
+
+
+-basic file structure:
+-sort by artist names (create artist name for new artist)
+-new id for each artist
+-new id for each album
+-new id for each song
+-create album file for new album (album title)
+file path= uploads/:artist/:album/:track
+
+store album art inside album folder
+store artist image in artist folder
+
+
+noSQL means that database can be easily messed with
+and difficult to re-arrange data, so may consider SQL
+
+-create a new entry for artist when artist is created.
+-new album: creates a new album in the array
+-new song: creates a new song in the array...
+when you name songs it stores that temporarily in scope
+
+you can edit everything and when it's done, you submit
+
+on submit, the album is added to database
+
+the PATHS are saved in the database
+theoretically it would be good to have a query system
+that would split the alphabet
+
+also, how can I store... artist/album info into a track
+on account of the fact that every track has artist/album
+it would be intelligent to simply add a new line in album for artist
+and add lines in track for artist/album
+
+add username that added the music
+
+when user wants to edit, ensure that it is that user logged in
+also route money only to that user
+
+PLAYBACK:
+-remember, browse accesses the DATABASE
+-you can get the entire browse info from the database.
+-album covers must be loaded in immediately for everything on the page. this requires GET request for that info from the API (I think)
+-when user clicks PLAY, then and only then the GET is sent for the file
+-
+
+-what I'm confused about is ... how will the images be served from the file system.
+-on page load: the ALBUM IMAGE src={{albumArt.path}}
+
+however, when the page is loaded
+I don't want every single track in the fuckin' database to be loaded
+
+
+
+so how do you create a new FOLDER?
+
+
+
+
+
+
+
+basic log in:
+-create an account
+-log into the account
+-stay logged in
+-access pages only for that account
+-log out of the account
+
+CREATE AN ACCOUNT =
+-creating a blog post or anything else in the SERVER
+-need to get mongo up and running, have to
+need a database of accounts
+only for accounts
+
+-email
+-password
+-screenname
+(go the reddit route)
+in order to upload music, you need to verify email
+[basic approach]
+will store those with a UID in the account system
+it will also auto-log in for you, and it will send an email to you with your username
+you will go to being logged in, and it will take you to the "add an artist" page
+
+-enter an artist name
+-add an artist image
+-set genre
+on submit: will check to make sure artist name isn't taken
+-then it will add artist to the MUSIC database ( a row for your username is added )
+-it will add the ARTIST name and ID to your username
+
+-then you will have a new artist page! from the database
+-you will then want to add albums
+when you are on your own artist page when you are logged IN... you are able to add albums
+-then you want to add albums
+
+when you are logged out, if you are on your artist page, it looks like it does to everyone else, you don't have access to it
+
+then you add the album... with the album add page
+
+all of this is added to the database and the browse page
+
+
+
+
+
+
+
+
+
+
+the question is how to pass database information into
+angular view properly...
+
+NODE: gets the database info from mongoose
+ANGULAR: takes the information and renders it.
+
+-wire up basic database
+-get basic structure up in angular
+-schema
+
+in the angular app...
+on browse page
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-artist:
+
+-add album
+
+select wav file
+
+-posts wav file to filesystem structure (figure this)
+-saves the path into the database for the album itself and attaches to song...
+
+-name song
+-add another
+
+click "publish" and it adds the entire thing to the database
+click cancel and it deletes the songs that were added
+
+
+
+
+then when album is played, it...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-remove duplicates in library
+-make the library respond to double-clicking
+-hilight things that are clicked
+
+
+
+
+
+
+-loop through library, set var isIn to false and if that variable is set to that, then add
+in scope.albums... find the name of the 
+
+
+
+
+
+
+
+
+
+				for (i=0; i<libraryData.library.length; i++){
+					for (j=0; j<libraryData.library[i].albums.length; j++){
+						albums.push(libraryData.library[i].albums[j])
+					}
+				}
+				console.log(albums)
+				return albums
+
+
+
+	  	}
+
+
+
+	  	scope.getCurrentTracks = function(tracks){
+	  		currentTracks = []
+
+	  		//iterate over tracks
+	  		for (i=0; i<scope.tracks.length; i++){
+	  			var trackTitle = scope.tracks[i].trackTitle
+	  			var trackNumber = scope.tracks[i].trackNumber
+	  			var albumTitle = undefined
+	  			var artistTitle = undefined
+	  			//find album
+	  			for (j=0; j<scope.albums.length; j++){
+	  				var albumCheck = scope.albums[j]
+	  				for (k=0; k<scope.albumCheck.tracks.length; k++){
+	  					if (scope.albumCheck.tracks[k].trackTitle===trackTitle){
+	  						//track's album title:
+	  						var albumTitle = albumCheck.albumTitle
+	  						console.log(albumTitle)
+	  					}
+	  				}
+	  			}
+	  			for (j=0; j<scope.artists.length){
+	  				var artistCheck = scope.artists[j]
+	  				for (k=0; k<scope.artistCheck.albums.length; k++){
+	  					if (scope.artistCheck.albums[k]===albumTitle){
+	  						var artistTitle = artistCheck.artist
+	  						console.log(artistTitle)
+	  					}
+	  				}
+	  			}
+	  			currentTracks.push({trackTitle:trackTitle, albumTitle:albumTitle, artistTitle:artistTitle, trackNumber:trackNumber})
+	  			
+	  		}
+	  		return currentTracks
+	  	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-structuring the database
+-uploading music to database
+-retrieving music from database
+-how to store the music for fast loading etc
+
+-how do accounts fit in with everything?
+
+
+
+-make an account
+-email, screenname, artistname
+
+-add artist, -add album
+
+(adds those to DB)
+
+,how does it know who is logged in
+,how does it know what to serve them
+,how does it authenticate their log ins
+,how does it protect their data
+,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SYNTH
+DRM
+CAI
+
+
+
+
+
+
+
+a form that creates a new album in the database
+
+
+
+
+
+-account page:
+your artists
+
+-add artist page:
+-name
+-genre
+-add image
+-promo
+
+-name album
+-add song (choose wav file)-name song
+-add album art
+-artist name
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

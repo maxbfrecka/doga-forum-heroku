@@ -1,0 +1,48 @@
+<a id="previewLink" href="#/catalog/{{thread.OPID}}">
+<div class="threadPreview" id="thread.OPID" ng-style="{'border-color': thread.posts[0].rID1bg}">
+
+	<div class="threadPreviewContent">
+
+		<img ng-show="thread.posts[0].image" src="{{thread.posts[0].image}}" alt="the image has failed miserably to load" width="120" height="120">
+
+
+		<!-- thread title  -->
+		<!-- <h3 class="previewTitle">{{thread.title}}</h3> -->		
+		
+<!-- 		<canvas id="image" ng-model="thread" width="100" height="100" style="border:1px solid red;">
+		</canvas> -->
+		<div ng-show="!thread.posts[0].image">
+			<mx-canvas-bot canvasid="{{thread.OPID}}" cbgc="{{thread.posts[0].cBGC}}" param-one={{thread.posts[0].cParam1}} param-two={{thread.posts[0].cParam2}} param-three={{thread.posts[0].cParam3}} param-four={{thread.posts[0].cParam4}} param-five={{thread.posts[0].cParam5}} crepone={{thread.posts[0].cRep1}} creptwo={{thread.posts[0].cRep2}} cparamaddone={{thread.posts[0].cParamAdd1}} cparamaddtwo={{thread.posts[0].cParamAdd2}} width={{120}} height={{120}}>
+			</mx-canvas-bot>
+		</div>
+
+
+	
+
+		<span class="previewPostTime">{{thread.posts[0].datetime}}</span>
+		<span class="previewAuthor">{{thread.posts[0].userName}}<span>
+		<span class="replyCount" ng-style="{'background-color': replyColor}">R: {{replyCount}} <span>
+		<!-- randomized color ID tag -->
+		<span class="previewTag" ng-style="{'background-color': thread.posts[0].rID1bg, 'color' : thread.posts[0].rID1t}">{{thread.posts[0].ID.charAt(0)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID2bg, 'color' : thread.posts[0].rID2t}">{{thread.posts[0].ID.charAt(1)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID3bg, 'color' : thread.posts[0].rID3t}">{{thread.posts[0].ID.charAt(2)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID4bg, 'color' : thread.posts[0].rID4t}">{{thread.posts[0].ID.charAt(3)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID5bg, 'color' : thread.posts[0].rID5t}">{{thread.posts[0].ID.charAt(4)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID6bg, 'color' : thread.posts[0].rID6t}">{{thread.posts[0].ID.charAt(5)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID7bg, 'color' : thread.posts[0].rID7t}">{{thread.posts[0].ID.charAt(6)}}</span><span class="previewTag" ng-style="{'background-color': thread.posts[0].rID8bg, 'color' : thread.posts[0].rID8t}">{{thread.posts[0].ID.charAt(7)}}</span>
+
+		<div class="summaryContainer">
+				<p class="previewSummary">{{thread.posts[0].content}}</p>
+		</div>
+	</div>
+
+
+
+</div>
+</a>
+
+
+
+
+
+
+
+
+
+
+<!-- place in main div for random color content -->
+<!-- ng-style="{'background-color': thread.randomColor}" -->

@@ -1,0 +1,97 @@
+sun: 12/4/16
+-fixed up playing system
+-added a library page
+-can add albums to library
+-fixed views
+-made library page filters work
+
+intervening week:
+-messed around with node a bit
+-music production stuff
+
+sun: 12/11/16
+-basic understanding of how the API actually works
+-file upload with angular to folder
+-understand request/response objects better
+-added very basic upload page
+Goals Tomorrow:
+-finish file upload system a bit
+-figure out file system and database a bit
+-file types question (mp3? try to ask luis this)
+-cookies, account system, database!
+Notes:
+It seems like the database system is central to this.
+Understanding that will determine my success here.
+A good database design will largely determine the possibilities of the site.
+Also the backend/server is essential. Those things together will largely make the app run how it runs.
+
+mon: 12/12/16
+-upload basics
+-mongodb up basically
+-started planning sections
+-create artist page
+Questions:
+-req/response objects as returning information
+-understanding how the http header/body etc
+-understanding how the error/next stuff works
+-try to get a stronger grasp on multipart form data
+-http focus
+-take a closer look at res objects: resp.config.data etc
+-evt?
+Goals Tomorrow:
+-access the data on the upload in the server
+-perhaps basic add artist feature
+-multipart.
+
+tues: 12:13:16
+-file upload functioning well
+-filesystem in place
+-basic database schema in place
+-artist add in place
+-artists
+Goals Tomorrow:
+-add album to artist
+-add image to album
+-add track/s to album (STORE IN TEMPS FOLDER THEN MOVE UPON PUBLISHING)
+-convert tracks to mp3 and put into album folder
+-playback
+
+wed: 12:14:16
+-artist/album/track schemas working
+-can add an album
+-add track system working, basically...
+URGENT NOTES:
+-a good guess for the reason sometimes things are goofing
+-on album upload is that the artists aren't refreshing
+Goals Tomorrow:
+-get the file upload to work without skipping... figure out why that is happening
+-tracks should be named by their ID and then extension added
+-consider file conversion
+-file playback
+-display albums, display artists, link things, display tracks
+-playback music, wire up controller
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

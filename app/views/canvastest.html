@@ -1,0 +1,44 @@
+<h1>CANVAS TEST</h1>
+
+<!-- 	<div ng-repeat="thread in threads">
+	<p>C: {{thread.ID}}</p>
+
+
+
+		<mx-canvas-test move-one={{thread.move_1}} move-two={{thread.move_2}}>
+		</mx-canvas-test>
+
+
+
+
+
+	</div> -->
+
+
+
+
+		<span ng-repeat="thread in threads">
+
+			<mx-canvas-test canvasid="{{thread.ID}}" param-one={{thread.move_1}} param-two={{thread.move_2}}>
+			</mx-canvas-test>
+
+		</span>
+
+
+
+
+<h1>NOT MAIN THREADS:</h1>
+
+<!-- <span ng-repeat="thread in threadData">
+			<mx-canvas-test canvasid="{{thread.OPID}}" param-one={{thread.move_1}} param-two={{thread.move_2}} bgc={{thread.bgc}}>
+			</mx-canvas-test>
+</span> -->
+
+
+
+
+<h1>CANVAS TEST FOR FULL DATA</h1>
+	<span ng-repeat="thread in threadData">
+		<mx-canvas-test canvasid="{{thread.canvasID}}" cbgc="{{thread.posts[0].cBGC}}" param-one={{thread.posts[0].cParam1}} param-two={{thread.posts[0].cParam2}} param-three={{thread.posts[0].cParam3}} param-four={{thread.posts[0].cParam4}} param-five={{thread.posts[0].cParam5}} crepone={{thread.posts[0].cRep1}} creptwo={{thread.posts[0].cRep2}} cparamaddone={{thread.posts[0].cParamAdd1}} cparamaddtwo={{thread.posts[0].cParamAdd2}} width={{120}} height={{120}}>
+		</mx-canvas-test>
+	</span>

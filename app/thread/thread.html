@@ -1,0 +1,75 @@
+<div id="post-table" autoscroll="true">
+
+		<!-- <form>
+			<textarea id="replyThread" name="post" required></textarea>
+			<input type="file" id="imageupload" class="filestyle" accept="image/gif, image/jpeg, image/png" data-classButton="btn btn-primary" data-input="false" data-buttonText="Upload Image" data-buttonBefore="false">
+			<button id="submitpost" type="submit">Add reply</button>
+		</form> -->
+
+	<div class="headColumns" ng-show="!tc.newReplyClick" ng-click="tc.newReplyClick=!tc.newReplyClick">
+		<div class="headContainer">
+				<div class="makeNewPost">
+					Add Reply
+				</div>
+		</div>
+	</div>
+
+	<div ng-show="tc.newReplyClick" ng-submit="tc.newReply(send)">
+		<form>
+			<textarea id="replyThread" name="post" ng-model="send.reply" required></textarea>
+			<button id="imageupload" type="button" ng-click="tc.newReplyClickImage=!tc.newReplyClickImage" ng-show="!tc.newReplyClickImage">Add Image</button>
+			<input type="text" id="imageupload" class="filestyle" ng-show="tc.newReplyClickImage" placeholder="Paste image URL" ng-model="tc.sendImage">
+			<button id="submitpost" type="submit">Add reply</button>
+		</form>
+	</div>
+
+
+	<div class="posts">
+<!-- 		<h1>{{thread.title}}</h1> -->
+		<div ng-repeat="post in tc.thread.posts">
+			<div class="post">
+					<div id="rID">
+						<span id="time">{{post.datetime}}</span><span id="rID1" ng-style="{'background-color': post.rID1bg, 'color': post.rID1t}">{{post.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': post.rID2bg, 'color': post.rID2t}">{{post.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': post.rID3bg, 'color': post.rID3t}">{{post.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': post.rID4bg, 'color': post.rID4t}">{{post.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': post.rID5bg, 'color': post.rID5t}">{{post.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': post.rID6bg, 'color': post.rID6t}">{{post.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': post.rID7bg, 'color': post.rID7t}">{{post.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': post.rID8bg, 'color': post.rID8t}">{{post.ID.charAt(7)}}</span> <span id="replyUsername">{{post.userName}}</span>
+					</div>
+
+					<div id="postBody">
+						<img ng-show="post.image" class="postImage" src="{{post.image}}" alt="gone" width="190" height="190">
+						<div ng-show="!post.image">
+							<mx-canvas-bot canvasid="{{post.ID}}" cbgc="{{post.cBGC}}" param-one={{post.cParam1}} param-two={{post.cParam2}} param-three={{post.cParam3}} param-four={{post.cParam4}} param-five={{post.cParam5}} crepone={{post.cRep1}} creptwo={{post.cRep2}} cparamaddone={{post.cParamAdd1}} cparamaddtwo={{post.cParamAdd2}} width={{190}} height={{190}}>
+							</mx-canvas-bot>
+						</div>
+						<blockquote class="postMessage">{{post.content}}</blockquote>
+				</div>
+		</div>
+
+
+
+		<div ng-repeat="reply in tc.currentReplies">
+			<div class="post">
+				<div id="{{reply.ID}}">
+					<span id="time">{{reply.datetime}}</span><span id="rID-thread"><span id="rID1" ng-style="{'background-color': reply.rID1bg, 'color': reply.rID1t}">{{reply.ID.charAt(0)}}</span><span id="rID2" ng-style="{'background-color': reply.rID2bg, 'color': reply.rID2t}">{{reply.ID.charAt(1)}}</span><span id="rID3" ng-style="{'background-color': reply.rID3bg, 'color': reply.rID3t}"	>{{reply.ID.charAt(2)}}</span><span id="rID4" ng-style="{'background-color': reply.rID4bg, 'color': reply.rID4t}">{{reply.ID.charAt(3)}}</span><span id="rID5" ng-style="{'background-color': reply.rID5bg, 'color': reply.rID5t}">{{reply.ID.charAt(4)}}</span><span id="rID6" ng-style="{'background-color': reply.rID6bg, 'color': reply.rID6t}">{{reply.ID.charAt(5)}}</span><span id="rID7" ng-style="{'background-color': reply.rID7bg, 'color': reply.rID7t}">{{reply.ID.charAt(6)}}</span><span id="rID8" ng-style="{'background-color': reply.rID8bg, 'color': reply.rID8t}">{{reply.ID.charAt(7)}}</span></span> <span id="replyUsername">{{reply.userName}}</span>
+				</div>
+
+				<div id="postBody">
+					<img ng-show="reply.image" class="postImage" src="{{reply.image}}" alt="gone" width="190" height="190">
+					<blockquote class="postMessage">{{reply.content}}</blockquote>
+				</div>
+			</div>
+		</div>
+		
+
+	</div>
+			
+<!-- 		<div class="posts">
+
+			<div class="post">
+				<div id="rID">
+					<span id="time"><%= posts[i].time %></span>
+					<span id="rID1"><%= posts[i].rID1 %></span><span id="rID2"><%= posts[i].rID2 %></span><span id="rID3"><%= posts[i].rID3 %></span><span id="rID4"><%= posts[i].rID4 %></span><span id="rID5"><%= posts[i].rID5 %></span><span id="rID6"><%= posts[i].rID6 %></span><span id="rID7"><%= posts[i].rID7 %></span><span id="rID8"><%= posts[i].rID8 %></span>
+				</div>
+					<blockquote class="message"><%= posts[i].post %></blockquote>
+				</div>
+			<% } %>
+		</div> -->
+
+	</div>

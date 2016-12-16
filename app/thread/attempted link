@@ -1,0 +1,144 @@
+link: function(scope,element,attrs){
+  		
+  		//trying this... no idea WTF IS GOING ON
+
+	  	scope.threads = threadData.threads;
+	  	scope.replies = replyData.replies;
+	
+	  	//gets thread info from URL and finds thread based on OPID
+	  	console.log('routeparams ID is ' + $routeParams.ID)
+	  	threadData.currentID = $routeParams.ID;
+	  	scope.currentID = threadData.currentID
+	  	threadData.currentThread = scope.threads.filter(function(obj) {
+    		return obj.OPID === scope.currentID;
+
+			})[0];
+			scope.thread = threadData.currentThread;
+			console.log(scope.thread)
+
+
+			//locates replies for this thread...
+			function search(nameKey, myArray){
+				var array = []
+		    for (var i=0; i < myArray.length; i++) {
+		        if (myArray[i].OPID === nameKey) {
+		            array.push(myArray[i]);
+		        }
+		    }
+		    return array
+			}
+			scope.currentReplies = search(scope.currentID, scope.replies);
+			console.log(scope.currentReplies)
+
+			scope.threads.$loaded(function(){
+				threadData.currentThread = scope.threads.filter(function(obj) {
+	    		return obj.OPID === scope.currentID;
+					})[0];
+				scope.thread = threadData.currentThread;
+			})
+
+			scope.replies.$loaded(function(){
+				scope.currentReplies = search(scope.currentID, scope.replies);
+			})
+			
+			/*function imgError(image){
+  			image.parentNode.parentNode.style.display = 'none';
+			}*/
+
+
+			//watches replies to update when new replies added
+			scope.$watch(function(){return replyData.replies},function(){
+ 				console.log('replies changed in LINK')
+ 				function search(nameKey, myArray){
+				var array = []
+		    for (var i=0; i < myArray.length; i++) {
+		        if (myArray[i].OPID === nameKey) {
+		            array.push(myArray[i]);
+		        }
+		    }
+		    return array
+				}
+				scope.currentReplies = search(scope.currentID, scope.replies)
+				$timeout(function() {scope.currentReplies = search(scope.currentID, scope.replies)
+  			// anything you want can go here and will safely be run on the next digest.
+				})
+				console.log('replyobject ' + scope.currentReplies)
+ 			})
+
+
+			//the function for adding a reply
+      scope.newReply = function(send){
+
+          // do some validation
+          if ( !send.reply ) {
+          	console.log("nothing happened"); 
+          	return false;
+          }
+          else {
+          // save the thread
+            console.log('REPLY might be')
+            //array of threads containing thread objects
+            //thread object contains array of posts
+            // threads[0] selects the first thread
+            // threads[0].posts[0] is the OP and also URL
+            //array of posts inside of each thread
+
+						//assists in moving page to correct ID at bottom
+						newReplyID = make_randID()
+
+            scope.replies.$add(
+            {
+            		OPID: scope.currentID,
+                ID: newReplyID,
+                userName: 'anonymous',
+                datetime: post_time(),
+                datesort: new Date().getTime(),
+                content: send.reply.trim(),
+                rID1bg: randomRGBcolor(),
+                rID2bg: randomRGBcolor(),
+                rID3bg: randomRGBcolor(),
+                rID4bg: randomRGBcolor(),
+                rID5bg: randomRGBcolor(),
+                rID6bg: randomRGBcolor(),
+                rID7bg: randomRGBcolor(),
+                rID8bg: randomRGBcolor(),
+                rID1t: randomRGBcolor(),
+                rID2t: randomRGBcolor(),
+                rID3t: randomRGBcolor(),
+                rID4t: randomRGBcolor(),
+                rID5t: randomRGBcolor(),
+                rID6t: randomRGBcolor(),
+                rID7t: randomRGBcolor(),
+                rID8t: randomRGBcolor(),
+                image: tc.sendImage || ''
+           	});
+
+            send.reply = '';
+            
+            scope.replies.$loaded(function(){
+							scope.currentReplies = search(scope.currentID, scope.replies);
+							console.log(scope.currentReplies)
+
+							//scroll to the bottom
+							scope.goToReply = function(id) {
+						      // set the location.hash to the id of
+						      // the element you wish to scroll to.
+						      console.log("woring")
+						      var old = $location.hash();
+							    $location.hash(id);
+							    $anchorScroll();
+							    $location.hash(old);
+						  }
+						  scope.goToReply(newReplyID)
+
+						})
+          }
+      };
+
+			//for show and hide post
+			scope.newReplyClick = newReplyClick.if
+			scope.newReplyClickImage = newReplyClick.ifImage
+ 			
+	  
+
+	  },
