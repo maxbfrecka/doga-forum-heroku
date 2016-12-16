@@ -71,7 +71,26 @@ Goals Tomorrow:
 -display albums, display artists, link things, display tracks
 -playback music, wire up controller
 
-
+thurs 12:15:16
+-connected pages of album and artist
+-tracks listed on page
+-track PLAYBACK system actually works fairly well already
+-mongoose database works with app
+-(very) basic deployment on heroku complete
+-travis CI, mocha have been added
+-pretty URL fully implemented
+-amazon S3 service signed up
+-no more /app/ ! in URL...
+Notes:
+-file system is apparently useless, and to be discarded.
+-I will need to implement Amazon to save files now. images/etc
+-may want to read up on various deployment options
+Goals Tomorrow:
+-understand the static file thing
+-understand how the server is working on Heroku/etc
+-try to understand the URL system of how the server works... and why you can do things locally that you can't do on Heroku
+-for instance, why can I visit /artists/albums locally and it works fine! with the views!
+-but when I do it on Heroku, I get an error response. . . I don't get it really
 
 
 
