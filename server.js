@@ -122,7 +122,7 @@ app.get('/api/getArtists', (req, res) => {
 
 //serves the HTML file
 //may need to try to get a stronger grasp on the static files thing
-app.get('*', (req, res) => res.sendFile('./app/index.html')
+app.get('*', (req, res) => res.sendFile('/app/index.html')
 
 
 
