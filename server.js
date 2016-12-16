@@ -7,14 +7,12 @@ const multer = require('multer')
 const upload = multer({ dest: __dirname+'/backend/file-system/artists'})
 const fs = require('fs')
 const multiparty = require('multiparty')
-
 //set up database
 mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL} = require('./backend/config');
 const {Artist} = require('./backend/models/artistModel');
 const {Album} = require('./backend/models/albumModel');
 const {Track} = require('./backend/models/trackModel');
-
 //file upload
 const multipart = require('connect-multiparty');
 const multipartyMiddleware = multipart(),
@@ -25,7 +23,6 @@ createTrack = require('./backend/uploaders/createTrack');
 const app = express()
 app.use(express.static(__dirname+'/app/'))
 app.use(bodyParser.json());
-
 
 
 
@@ -41,7 +38,6 @@ app.get('/artists/:artistName', (req, res) => {
         res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
-
 //should query TRACKS database for tracks
 app.get('/tracks/:albumArtist/:albumName', (req, res) => {
   Track
@@ -53,7 +49,6 @@ app.get('/tracks/:albumArtist/:albumName', (req, res) => {
         res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
-
 //gets albums for artist
 app.get('/albums/:artistName', (req, res) => {
   Album
@@ -65,9 +60,6 @@ app.get('/albums/:artistName', (req, res) => {
         res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
-
-
-
 //gets specific album
 app.get('/albums/:artistName/:albumName', (req, res) => {
   Album
@@ -84,11 +76,6 @@ app.get('/albums/:artistName/:albumName', (req, res) => {
         res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
-
-
-
-
-
 //adds album folder, adds album to database onto artist, adds cover art
 app.post('/api/createAlbum', multipartyMiddleware, createAlbum.uploadFile)
 //add track to database and save to file system
@@ -119,10 +106,12 @@ app.get('/api/getArtists', (req, res) => {
     });
 });
 
-
 //serves the HTML file
 //may need to try to get a stronger grasp on the static files thing
+//ensures that CSS stylesheet is added
 app.use('/*', express.static(__dirname + '/app/assets/' ));
+//adds bootstrap CSS
+app.use('/*', express.static(__dirname + '/app/bower_components/bootstrap/dist/' ));
 app.all('/*', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
 
 
