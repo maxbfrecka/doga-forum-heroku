@@ -1,9 +1,9 @@
 angular.module('views', ['ngRoute'])
-	.config(['$routeProvider',  function($routeProvider){
+	.config(['$routeProvider', '$locationProvider',  function($routeProvider, $locationProvider){
 	  $routeProvider.when('/catalog/', {
 	    templateUrl: 'views/main.html'
 	  })
-	  .when('/library/', {
+	  .when('/library', {
 	  	templateUrl: 'views/myLibrary.html',
 	  	controller: 'myLibraryController'
 	  })
@@ -11,11 +11,11 @@ angular.module('views', ['ngRoute'])
 	  	templateUrl: 'views/thread.html',
 	  	controller: 'threadController'
 	  })
-	  .when('/canvas/', {
+	  .when('/canvas', {
 	  	templateUrl: 'views/canvastest.html',
 	  	controller: 'canvasController'
 	  })
-	  .when('/browse/', {
+	  .when('/browse', {
 	  	templateUrl: 'views/browse.html',
 	  	controller: 'browseController'
 	  })
@@ -23,23 +23,23 @@ angular.module('views', ['ngRoute'])
 	  	templateUrl: 'views/album.html',
 	  	controller: 'albumController'
 	  })
-	  .when('/createAlbum/', {
+	  .when('/createAlbum', {
 	  	templateUrl: 'views/createAlbum.html',
 	  	controller: 'createAlbumController'
 	  })
-	  .when('/login/', {
+	  .when('/login', {
 	  	templateUrl: 'views/login.html',
 	  	controller: 'loginController'
 	  })
-	  .when('/signup/', {
+	  .when('/signup', {
 	  	templateUrl: 'views/signUp.html',
 	  	controller: 'signUpController'
 	  })
-	  .when('/createArtist/', {
+	  .when('/createArtist', {
 	  	templateUrl: 'views/createArtist.html',
 	  	controller: 'createArtistController'
 	  })
-	  .when('/artists/', {
+	  .when('/artists', {
 	  	templateUrl: 'views/artists.html',
 	  	controller: 'artistsController'
 	  })
@@ -52,6 +52,8 @@ angular.module('views', ['ngRoute'])
 	  })
 	  .otherwise('/error');
 
+	  //heroku removes #! etc
+	  $locationProvider.html5Mode(true);
   }])
   .run(['$rootScope', '$location', function($rootScope, $location) {
 	  $rootScope.$on('$routeChangeError', function() {

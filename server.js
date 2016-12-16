@@ -94,8 +94,6 @@ app.get('/albums/:artistName/:albumName', (req, res) => {
 app.post('/api/createAlbum', multipartyMiddleware, createAlbum.uploadFile)
 //add track to database and save to file system
 app.post('/api/createTrack', multipartyMiddleware, createTrack.uploadFile)
-
-app.get('/', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
 //uploads image file, create folders
 app.post('/api/createArtist', multipartyMiddleware, createArtist.uploadFile)
 //get artists for page
@@ -123,8 +121,9 @@ app.get('/api/getArtists', (req, res) => {
 });
 
 
-
-
+//serves the HTML file
+//may need to try to get a stronger grasp on the static files thing
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
 
 
 
