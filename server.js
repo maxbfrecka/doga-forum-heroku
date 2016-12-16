@@ -29,16 +29,6 @@ app.use(bodyParser.json());
 
 
 
-//this will hopefully solve the routing problem
-app.use(function(req, res) {
-  // Use res.sendfile, as it streams instead of reading the file into memory.
-  res.sendfile(__dirname + './app/index.html');
-});
-
-
-
-
-
 
 //return one artist
 app.get('/artists/:artistName', (req, res) => {
@@ -132,7 +122,7 @@ app.get('/api/getArtists', (req, res) => {
 
 //serves the HTML file
 //may need to try to get a stronger grasp on the static files thing
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
+app.get('*', (req, res) => res.sendFile('./app/index.html')
 
 
 
