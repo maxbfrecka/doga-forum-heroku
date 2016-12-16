@@ -122,7 +122,7 @@ app.get('/api/getArtists', (req, res) => {
 
 //serves the HTML file
 //may need to try to get a stronger grasp on the static files thing
-app.use('/css', express.static(__dirname + '/app/assets/style.css' ));
+app.use('/*', express.static(__dirname + '/app/assets/' ));
 app.all('/*', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
 
 
