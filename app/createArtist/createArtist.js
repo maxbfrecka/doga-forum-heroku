@@ -33,7 +33,7 @@ angular.module('createArtist',['ngFileUpload'])
 
         		//should page to new artist
         		const artistLoc = scope.artistName.replace(/\s+/g, '-').toLowerCase()
-            $window.location.href = '/app/#/artists/' + artistLoc
+            $window.location.href = '/artists/' + artistLoc
 
         }, function (res) {
             console.log('Error status: ' + res.status);

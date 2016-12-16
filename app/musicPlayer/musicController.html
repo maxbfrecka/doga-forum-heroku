@@ -30,7 +30,7 @@
 
 <div class="musicPlayerContainer">
 
-		<a class="musicPlayerCoverLink" href="#/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
+		<a class="musicPlayerCoverLink" href="/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
 			<div class="musicPlayerArtIconContainer">
 				<img class="musicPlayerAlbumArtIcon" src="{{musicControllerAlbumArtPath}}">
 			</div>
@@ -53,7 +53,7 @@
 			
 		</div>
 
-		<a class="musicPlayerDataLink" href="#/music/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
+		<a class="musicPlayerDataLink" href="/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
 			<div class="nowPlayingData">
 				<span>{{trackTitle}}</span>
 				<span>{{albumTitle}}</span>
