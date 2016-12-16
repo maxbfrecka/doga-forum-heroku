@@ -82,7 +82,7 @@ angular.module('newPost', ['firebase'])
               cBGC: rgb2hex(randomRGBcolor())
           }]});
           send.thread = '';
-          $location.path('/' + _OPID);
+          $location.path('/catalog/' + _OPID);
         }
       };
 	  	

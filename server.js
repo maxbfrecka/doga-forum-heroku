@@ -39,7 +39,7 @@ app.get('/artists/:artistName', (req, res) => {
     .then(artist =>res.json(artist.apiRepr()))
     .catch(err => {
       console.error(err);
-        res.status(500).json({message: 'Internal server error'})
+        res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
 
@@ -51,7 +51,7 @@ app.get('/tracks/:albumArtist/:albumName', (req, res) => {
     .then(track =>res.json(track))
     .catch(err => {
       console.error(err);
-        res.status(500).json({message: 'Internal server error'})
+        res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
 
@@ -63,7 +63,7 @@ app.get('/albums/:artistName', (req, res) => {
     .then(album =>res.json(album))
     .catch(err => {
       console.error(err);
-        res.status(500).json({message: 'Internal server error'})
+        res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
 
@@ -82,7 +82,7 @@ app.get('/albums/:artistName/:albumName', (req, res) => {
     })
     .catch(err => {
       console.error(err);
-        res.status(500).json({message: 'Internal server error'})
+        res.status(500).json({message: 'WE DONE GOOFED - SORRY'})
     });
 });
 
@@ -116,7 +116,7 @@ app.get('/api/getArtists', (req, res) => {
     .catch(
       err => {
         console.error(err);
-        res.status(500).json({message: 'Internal server error'});
+        res.status(500).json({message: 'WE DONE GOOFED - SORRY'});
     });
 });
 
