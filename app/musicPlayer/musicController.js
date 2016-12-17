@@ -82,7 +82,7 @@ angular.module('musicController',[])
 
 
 	  	//sourcepath to use with file path in function
-	  	const sourcePathBase = '/../backend/file-system/artists/'
+	  	const sourcePathBase = 'https://dogatracks.s3.amazonaws.com/'
 
 
 	  	//SONG LOADER
@@ -100,9 +100,9 @@ angular.module('musicController',[])
 		  					}
 		  				} else {
 		  				scope.nowPlaying.restart()
-		  				const wavFilePath = sourcePathBase + nowPlayingList.nowPlayingTrack.trackWavSource
+		  				var wavFilePath = sourcePathBase + nowPlayingList.nowPlayingTrack.trackWavSource
 		  				//set album art path
-		  				scope.musicControllerAlbumArtPath = '/../backend/file-system/artists/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
+		  				scope.musicControllerAlbumArtPath = 'https://dogaalbums.s3.amazonaws.com/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
 		  				console.log(wavFilePath)
 		  				//if first track playing, load the new track
 			  			scope.nowPlaying = ngAudio.load(wavFilePath)
@@ -113,7 +113,7 @@ angular.module('musicController',[])
 			  			scope.trackTitle=nowPlayingList.nowPlayingTrack.trackName
 			  			scope.albumTitle=nowPlayingList.nowPlayingTrack.trackAlbum
 			  			scope.artistName=nowPlayingList.nowPlayingTrack.trackArtist
-			  			scope.musicControllerAlbumArtPath = '/../backend/file-system/artists/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
+			  			scope.musicControllerAlbumArtPath = 'https://dogaalbums.s3.amazonaws.com/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
 
 
 			  			//for play button queue
@@ -121,14 +121,15 @@ angular.module('musicController',[])
 			  			}
 			  		} else {
 			  			console.log(nowPlayingList.nowPlayingTrack)
-			  			scope.musicControllerAlbumArtPath = '/../backend/file-system/artists/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
-			  			scope.nowPlaying = ngAudio.load(nowPlayingList.nowPlayingTrack.sourceFile)
+			  			var wavFilePath = sourcePathBase + nowPlayingList.nowPlayingTrack.trackWavSource
+			  			scope.musicControllerAlbumArtPath = 'https://dogaalbums.s3.amazonaws.com/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
+			  			scope.nowPlaying = ngAudio.load(wavFilePath)
 			  			//wait until the above is defined...
 			  			scope.nowPlaying.play()
 			  			scope.trackTitle=nowPlayingList.nowPlayingTrack.trackName
 			  			scope.albumTitle=nowPlayingList.nowPlayingTrack.trackAlbum
 			  			scope.artistName=nowPlayingList.nowPlayingTrack.trackArtist
-			  			scope.musicControllerAlbumArtPath = '/../backend/file-system/artists/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
+			  			scope.musicControllerAlbumArtPath = 'https://dogaalbums.s3.amazonaws.com/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
 
 			  			//for play button queue
 			  			scope.nowPlayingTrack = nowPlayingList.nowPlayingTrack

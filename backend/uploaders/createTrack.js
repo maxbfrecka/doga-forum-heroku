@@ -8,41 +8,54 @@ const {Artist} = require('../models/artistModel');
 const {Album} = require('../models/albumModel');
 const {Track} = require('../models/trackModel');
 
+var AWS = require('aws-sdk');
+
+var accessKeyId =  process.env.AWS_ACCESS_KEY || "xxxxxx";
+var secretAccessKey = process.env.AWS_SECRET_KEY || "+xxxxxx+B+xxxxxxx";
+console.log(accessKeyId)
+AWS.config.update({
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey
+});
+var s3 = new AWS.S3(
+  {apiVersion: '2006-03-01',
+  signatureVersion: 'v4'
+  }
+);
+
+
+//naming conventions could use improvement
 createTrack = function() {};
-
-/* FILES NEED TO BE SAVED BY THEIR TRACK ID */
-
+/* FILES NEED TO BE SAVED BY THEIR TRACK ID TO PREVENT DUPLICATES...*/
 createTrack.prototype.uploadFile = function(req, res) {
   var file = req.files.file;
-
   //id for storage
   const trackId = uuid.v4()
   console.log('adding Track on server')
-
   //function to add file to Wav Path
   //called in a callback below
-  addWavFile = function(artistId, albumId){
-    //creates path with inputs
-    const wavPath = '/../file-system/artists/'+artistId+'/albums/'+albumId+'/wav/'
-    var tmp_path = file.path;
-    //adds image to new folder
-    var target_path = path.join(__dirname, wavPath + file.name)
-    
-    console.log('SAVING THE IMAGE:')
-    console.log(target_path)
-    
-    var src = fs.createReadStream(tmp_path);
-    console.log('attempting file write')
-    var dest = fs.createWriteStream(target_path);
-    src.pipe(dest);
+  addWavFile = function(trackWavSource){
+    read_file = fs.readFileSync(file.path)
+    var params = {Bucket: 'dogatracks', Key: trackWavSource, Body: read_file, ACL:"public-read"}
+    s3.putObject(params, function(err, data) {
+      console.log('attemping to upload to S3!')
+      if (err) {
+        console.log("Error uploading data: ", err)
+      } else {
+        console.log("Successfully uploaded data to myBucket/myKey")
+        console.log(data)
+        //remove local file.
+        /*fs.unlink(file.path, function(err) {
+            if (err) {console.log(err)}
+        });   */
+      }
+    })
   }
 
   //have to get Ids for the album and artist in order to create album/artist directory
   //define paths for file saving... not sure
   var artistId = undefined
   var albumId = undefined
-  var mp3Path = '/../file-system/artists/'+artistId+'/albums/'+albumId+'/wav/'
-
   //function to get albumId and artistId
   getAlbumId = function(callback){
     console.log(req.body.trackAlbum)
@@ -69,18 +82,18 @@ createTrack.prototype.uploadFile = function(req, res) {
       } else {
         artistId = Artist.artistId
         //adds to database
-        callback(artistId, albumId, trackAlbumArt)
+        const trackWavSource = artistId + '-' + albumId + '-' + trackId + '-' + req.files.file.originalFilename
+        callback(artistId, albumId, trackAlbumArt, trackWavSource)
         //saves the file
-        addWavFile(artistId, albumId)
+        addWavFile(trackWavSource)
       }
     })
   }
 
-  addTrackToDatabase = function(artistId, albumId, trackAlbumArt){
+  addTrackToDatabase = function(artistId, albumId, trackAlbumArt, trackWavSource){
     console.log('inside add to database')
     const dateAdded = new Date()
     //defines path for the album art
-    const trackWavSource = artistId + '/albums/' + albumId + '/wav/' + req.files.file.name
     //locates album and pushes new track...
     Track
     .create({
