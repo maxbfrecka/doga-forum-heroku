@@ -1,4 +1,5 @@
 //the ASSETS version!
+// line 237 is the CURRENT TIME CHANGER
 'use strict';
 angular.module('ngAudio', [])
 .directive('ngAudio', ['$compile', '$q', 'ngAudio', function($compile, $q, ngAudio) {
@@ -234,7 +235,11 @@ angular.module('ngAudio', [])
                 };
             }, function(newValue, oldValue) {
                 if (newValue.currentTime !== oldValue.currentTime) {
-                    audioObject.setCurrentTime(newValue.currentTime);
+                    //audioObject.setCurrentTime(newValue.currentTime);
+                }
+
+                if (newValue.progress !== oldValue.progress) {
+                    audioObject.setProgress(newValue.progress);
                 }
                 if (newValue.volume !== oldValue.volume) {
                     audioObject.setVolume(newValue.volume);
