@@ -1,2 +1,66 @@
 -angular-audio in the bower installation seemed to have a question about the angular version in use, didn't respond to install it in angular version...again...
 -bower resolutions?
+
+
+
+
+- not sure why audio won't play
+- it plays when the tab is changed! which means that the window itself may be triggering something.
+- also when that restart thing is altered, ($willRestart = false when the track is restarted...)
+-the track plays as well.
+-the track seems to show it is playing at any given point.
+-perhaps it's currenttime etc
+
+-it also plays fine when debugging. something isn't being triggered in the code which is causing the problem!
+
+
+when this is removed, the problem seems to to away... why does this happen when changing windows?
+if (newValue.currentTime !== oldValue.currentTime) {
+                    audioObject.setCurrentTime(newValue.currentTime);
+                }
+
+
+                place this at line 237: in ngAudio to test
+                console.log('old value')
+                    console.log(oldValue.currentTime)
+                    console.log('new value')
+                    console.log(newValue.currentTime)
+                    console.log('audio.currentTime')
+                    console.log(audio.currentTime)
+                    console.log('audioObject.currentTime')
+                    console.log(audioObject.currentTime)
+
+
+                    at line 322 :audioObject.currentTime = audio.currentTime;
+                    the observe feature... something is going wrong...
+                    audio.currentTime is setting the audioObject.currentTime and it is glitching
+                    perhaps due to window? no idea
+
+
+                    at 197
+                    this.setCurrentTime = function(currentTime) {
+            if (audio && audio.duration) {
+                console.log('?');
+                audio.currentTime = currentTime;
+            }
+        };
+
+
+these are problems
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -236,10 +236,6 @@ angular.module('ngAudio', [])
                 if (newValue.currentTime !== oldValue.currentTime) {
                     audioObject.setCurrentTime(newValue.currentTime);
                 }
-
-                if (newValue.progress !== oldValue.progress) {
-                    audioObject.setProgress(newValue.progress);
-                }
                 if (newValue.volume !== oldValue.volume) {
                     audioObject.setVolume(newValue.volume);
                 }
