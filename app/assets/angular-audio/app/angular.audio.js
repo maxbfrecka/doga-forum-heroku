@@ -137,7 +137,7 @@ angular.module('ngAudio', [])
     muting: false,
     songmuting: false,
     performance: 25,
-    unlock: false
+    unlock: true
 })
 
 .factory('NgAudioObject', ['cleverAudioFindingService', '$rootScope', '$interval', '$timeout', 'ngAudioGlobals', function(cleverAudioFindingService, $rootScope, $interval, $timeout, ngAudioGlobals) {
