@@ -21,7 +21,8 @@ artistSchema.methods.apiRepr = function() {
     userName: this.userName,
     artistImage: this.artistImage,
     artistId: this.artistId,
-    artistBio: this.artistBio
+    artistBio: this.artistBio,
+    artistDateAdded: this.artistDateAdded
   };
 }
 

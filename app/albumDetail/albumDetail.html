@@ -1,6 +1,6 @@
 <div class="albumDetailContainer">
 <!-- fix image! -->
-	<img src="/../backend/file-system/artists/{{adc.currentAlbum.albumArt}}" width="400" height="400">
+	<img src="https://dogaalbums.s3.amazonaws.com/{{adc.currentAlbum.albumArt}}" width="400" height="400">
 	<h1>title: {{adc.currentAlbum.albumName}}</h1>
 
 	<a href="/artists/{{adc.currentArtist.artistName | removeSpacesThenLowercase}}">

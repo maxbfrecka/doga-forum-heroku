@@ -47,6 +47,10 @@ angular.module('views', ['ngRoute'])
 	  	templateUrl: 'views/artist.html',
 	  	controller: 'artistController'
 	  })
+	  .when('/uploadTester', {
+	  	templateUrl: 'views/uploadTester.html',
+	  	controller: 'uploadTesterController'
+	  })
 	  .when('/error', {
 	    template : '<p>Error - Page Not Found</p>'
 	  })
@@ -87,4 +91,6 @@ angular.module('views', ['ngRoute'])
 .controller('artistsController', ['browseTestData', function($scope, browseTestData){
 }])
 .controller('artistController', ['browseTestData', function($scope, browseTestData){
+}])
+.controller('uploadTesterController', ['browseTestData', function($scope, browseTestData){
 }])

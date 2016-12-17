@@ -75,7 +75,7 @@ angular.module('artist', [])
 		albumData.albums = undefined
 		
 		albumData.getAlbums = function(albumArtist){
-			const APIURL = '/albums/'+albumArtist
+			const APIURL = '/api/albums/'+albumArtist
 			console.log('the API URL to get albums:')
 			console.log(APIURL)
 			return $http.get(APIURL, {cache:true})

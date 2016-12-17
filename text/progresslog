@@ -86,11 +86,9 @@ Notes:
 -I will need to implement Amazon to save files now. images/etc
 -may want to read up on various deployment options
 Goals Tomorrow:
--understand the static file thing
 -understand how the server is working on Heroku/etc
--try to understand the URL system of how the server works... and why you can do things locally that you can't do on Heroku
--for instance, why can I visit /artists/albums locally and it works fine! with the views!
--but when I do it on Heroku, I get an error response. . . I don't get it really
+-fix api system by inserting api before each call
+-file system
 
 
 

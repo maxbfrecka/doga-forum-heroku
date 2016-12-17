@@ -6,6 +6,22 @@ const mkdirp = require('mkdirp-promise')
 const {Artist} = require('../models/artistModel');
 const {Album} = require('../models/albumModel');
 
+var AWS = require('aws-sdk');
+
+var accessKeyId =  process.env.AWS_ACCESS_KEY || "xxxxxx";
+var secretAccessKey = process.env.AWS_SECRET_KEY || "+xxxxxx+B+xxxxxxx";
+console.log(accessKeyId)
+AWS.config.update({
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey
+});
+var s3 = new AWS.S3(
+  {apiVersion: '2006-03-01',
+  signatureVersion: 'v4'
+  }
+);
+
+
 createAlbum = function() {};
 
 createAlbum.prototype.uploadFile = function(req, res) {
@@ -13,39 +29,23 @@ createAlbum.prototype.uploadFile = function(req, res) {
   //id for storage
   const albumId = uuid.v4()
 
-  //function to add album folders
-  makeDirs = function(artistId ,callback){
-    //create directories using artistId
-    const albumDirectory = '/Users/maxfrecka/Desktop/PROJECTS/doga-forum/backend/file-system/artists/'+artistId+'/albums/'+albumId
-    const albumImages = albumDirectory + '/images/'
-    const albumWav = albumDirectory + '/wav/'
-    const albumMp3 = albumDirectory + '/mp3/'
-    console.log('make directory:')
-    console.log(albumImages)
-    //create folders then use callback
-    mkdirp(albumDirectory, function (err) {
-      if (err) console.error(err)
-      else mkdirp(albumImages, function (err) {
-        if (err) console.error(err)
-        else mkdirp(albumWav, function (err) {
-          if (err) console.error(err)
-          else mkdirp(albumMp3, function (err) {
-            if (err) console.error(err)
-            //pass artistId into callback for addFile function!
-            else callback(artistId)
-          })
-        })
-      })    
-    })
-  }
-
   //adds image to new folder
-  addFile = function(artistId){
-    var tmp_path = file.path;
-    var target_path = path.join(__dirname, '/../file-system/artists/'+artistId+'/albums/'+ albumId + '/images/' + file.name)
-    var src = fs.createReadStream(tmp_path);
-    var dest = fs.createWriteStream(target_path);
-    src.pipe(dest);
+  addFile = function(artistId, albumArtPath){
+    read_file = fs.readFileSync(file.path)
+    var params = {Bucket: 'dogaalbums', Key: albumArtPath, Body: read_file, ACL:"public-read"}
+    s3.putObject(params, function(err, data) {
+      console.log('attemping to upload to S3!')
+      if (err) {
+        console.log("Error uploading data: ", err)
+      } else {
+        console.log("Successfully uploaded data to myBucket/myKey")
+        console.log(data)
+        //remove local file.
+        /*fs.unlink(file.path, function(err) {
+            if (err) {console.log(err)}
+        });   */
+      }
+    })
   }
 
   //callbacks at bottom ensure order of operations
@@ -58,31 +58,31 @@ createAlbum.prototype.uploadFile = function(req, res) {
         console.log('asdf')
       } else {
         artistId = Artist.artistId
+        //create album art path
+        const albumArtPath = artistId+'-'+albumId+'-'+file.originalFilename
         //adds to database using addalbumtodatabase and artistId
-        callbackA(artistId)
+        callbackA(artistId, albumArtPath)
         //makes folders using artistId, then inserts file using addFile
-        callbackB(artistId, addFile)
+        callbackB(artistId, albumArtPath)
       }
     })
   }
 
   //adds to albums collection
-  addAlbumToDatabase = function(artistId){
+  addAlbumToDatabase = function(artistId, albumArtPath){
     console.log('inside add to database')
     console.log(artistId)
-    const dateAdded = new Date()
-    //defines path for the album art
-    const albumArt = artistId + '/albums/' + albumId + '/images/' + file.name
+    const albumDateAdded = new Date()
     Album
       .create(
           {albumName:req.body.albumName, 
           albumUserName: req.body.albumUserName, 
           albumArtist: req.body.albumArtist,
           albumArtistImage: req.body.albumArtistImage,
-          albumArt: albumArt,
+          albumArt: albumArtPath,
           albumId: albumId,
           albumArtistId: artistId,
-          dateAdded: dateAdded
+          albumDateAdded: albumDateAdded
           }
         )
       .then(album => res.status(204).json({message: 'It worked'}))
@@ -90,7 +90,7 @@ createAlbum.prototype.uploadFile = function(req, res) {
   }
 
   //arguments are placed in functions within getArtistId definition! this triggers everything!
-  getArtistId(addAlbumToDatabase, makeDirs)
+  getArtistId(addAlbumToDatabase, addFile)
 
   
 

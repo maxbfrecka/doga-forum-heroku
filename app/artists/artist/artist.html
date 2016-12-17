@@ -2,7 +2,7 @@
 	
 	<p>{{currentArtist.artistName}}</p>
 
-	<img src="/../../backend/file-system/artists/{{currentArtist.artistImage}}">
+	<img src="https://dogaartists.s3.amazonaws.com/{{currentArtist.artistImage}}">
 
 <br>
 
@@ -11,7 +11,7 @@
 	<div ng-repeat="album in albums">
 	<a class="artistDetailAlbumLink" href="/artists/{{currentArtist.artistName | removeSpacesThenLowercase}}/{{album.albumName | removeSpacesThenLowercase}}">
 		<h3>{{album.albumName}}</h3>
-		<img src="/../../backend/file-system/artists/{{album.albumArt}}">
+		<img src="https://dogaalbums.s3.amazonaws.com/{{album.albumArt}}">
 	</a>
 	</div>
 

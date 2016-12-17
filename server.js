@@ -7,6 +7,10 @@ const multer = require('multer')
 const upload = multer({ dest: __dirname+'/backend/file-system/artists'})
 const fs = require('fs')
 const multiparty = require('multiparty')
+
+const dotenv = require('dotenv').config()
+
+const AWS = require('aws-sdk');
 //set up database
 mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL} = require('./backend/config');
@@ -20,15 +24,24 @@ const multipartyMiddleware = multipart(),
 createArtist = require('./backend/uploaders/createArtist');
 createAlbum = require('./backend/uploaders/createAlbum');
 createTrack = require('./backend/uploaders/createTrack');
+
 const app = express()
 app.use(express.static(__dirname+'/app/'))
 app.use(bodyParser.json());
 
+//set this up properly
+/*var accessKeyId =  process.env.AWS_ACCESS_KEY || "xxxxxx";
+var secretAccessKey = process.env.AWS_SECRET_KEY || "+xxxxxx+B+xxxxxxx";
+AWS.config.update({
+    accessKeyId: accessKeyId,
+    secretAccessKey: secretAccessKey
+});
+var s3 = new AWS.S3();*/
 
 
 
 //return one artist
-app.get('/artists/:artistName', (req, res) => {
+app.get('/api/artists/:artistName', (req, res) => {
   Artist
     .findOne({artistName: req.params.artistName})
     .exec()
@@ -50,7 +63,7 @@ app.get('/tracks/:albumArtist/:albumName', (req, res) => {
     });
 });
 //gets albums for artist
-app.get('/albums/:artistName', (req, res) => {
+app.get('/api/albums/:artistName', (req, res) => {
   Album
     .find({albumArtist: req.params.artistName})
     .exec()
@@ -61,7 +74,7 @@ app.get('/albums/:artistName', (req, res) => {
     });
 });
 //gets specific album
-app.get('/albums/:artistName/:albumName', (req, res) => {
+app.get('/api/albums/:artistName/:albumName', (req, res) => {
   Album
     .find({albumName: req.params.albumName})
     .exec()

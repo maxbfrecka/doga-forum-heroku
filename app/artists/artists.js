@@ -46,7 +46,7 @@ angular.module('artists', [])
     }
 
     artistData.getOneArtist = function(artistName){
-    	const APIURL = '/artists/' + artistName
+    	const APIURL = '/api/artists/' + artistName
     	return $http.get(APIURL, {cache:true})
     }
 
