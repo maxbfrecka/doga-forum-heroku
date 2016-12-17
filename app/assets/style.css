@@ -649,4 +649,58 @@ a.musicPlayerCoverLink:hover {
 }
 
 
+.artistPreviewLink {
+    color:white;
+}
 
+.artistsDisplayContainer{
+    display:inline;
+    padding:20px;
+    margin:20px;
+    border-radius:10px;
+    border-style:solid;
+    border-width:0px;
+    background-color:#fff91d;
+    min-height:5000px;
+    position:relative;
+}
+
+.artistPreviewContainer{
+    float:left;
+    background-color:black;
+    display:inline-block;
+    max-height: 240px;
+    max-width:240px;
+    width:240px;
+    height:240px;
+    margin:20px;
+    padding:10px;
+    border-radius:10px;
+}
+
+.artistDisplayAlbumsContainer{
+    display:inline;
+    min-height:1000px;
+}
+
+.artistDisplayAlbums{
+    display:inline;
+}
+
+.artistDisplayAlbumPreview{
+    float:left;
+    display:inline-block;
+    max-height:320px;
+    max-width:320px;
+    height:320px;
+    width:320px;
+    margin:15px;
+    padding:5px;
+    background-color:white;
+}
+
+
+.artistDisplayEditAddAlbum{
+    margin:50px;
+    display:inline-block;
+}

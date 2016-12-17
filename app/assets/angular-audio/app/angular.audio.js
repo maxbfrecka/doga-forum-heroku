@@ -1,5 +1,5 @@
 //the ASSETS version!
-// line 237 is the CURRENT TIME CHANGER
+// line 237 is the CURRENT TIME CHANGER... this disables currently the issue with glitching
 'use strict';
 angular.module('ngAudio', [])
 .directive('ngAudio', ['$compile', '$q', 'ngAudio', function($compile, $q, ngAudio) {

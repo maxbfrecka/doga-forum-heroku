@@ -108,7 +108,8 @@ createTrack.prototype.uploadFile = function(req, res) {
           trackArtistImage: req.body.trackArtistImage,
           trackAlbumArt: trackAlbumArt,
           trackDateAdded: dateAdded,
-          trackWavSource: trackWavSource
+          trackWavSource: trackWavSource,
+          trackAlbumTrackLength: req.body.trackAlbumTrackLength
       })
     .then(track => res.status(204).end())
     .catch(err => res.status(500).json({message: 'Internal server error'}))

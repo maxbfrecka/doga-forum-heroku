@@ -108,7 +108,7 @@ angular.module('albumDetail',[])
 	trackData.tracks = []
 
 	trackData.getTracks = function(albumArtist, albumName){
-		const APIURL = '/tracks/'+albumArtist+'/'+albumName
+		const APIURL = '/api/tracks/'+albumArtist+'/'+albumName
 		console.log('the API URL to get tracks:')
 		console.log(APIURL)
 		return $http.get(APIURL, {cache:true})

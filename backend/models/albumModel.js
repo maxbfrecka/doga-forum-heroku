@@ -15,7 +15,7 @@ const albumSchema = mongoose.Schema(
 		albumDateCreated: Date,
 		albumDateAdded: Date,
 		timeLength: Number,
-		trackLength: Number
+		albumTrackLength: Number
 	}		
 )
 
@@ -33,7 +33,7 @@ albumSchema.methods.apiRepr = function() {
 		albumDateCreated: this.albumDateCreated,
 		albumDateAdded: this.albumDateAdded,
 		timeLength: this.timeLength,
-		trackLength: this.trackLength
+		albumTrackLength: this.trackLength
   };
 }
 

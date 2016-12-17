@@ -61,7 +61,7 @@ angular.module('createAlbum',['ngFileUpload'])
 	  		const url = '/../api/createAlbum'
         Upload.upload({
             url: '/../api/createAlbum',
-            data: {file: file, albumUserName: scope.username, albumArtist: scope.artistEditName, albumName: scope.albumName, albumArtistImage: scope.currentArtistData.artistImage},
+            data: {file: file, albumUserName: scope.username, albumArtist: scope.artistEditName, albumName: scope.albumName, albumArtistImage: scope.currentArtistData.artistImage, albumTrackLength: scope.tracks.length},
             file: file
         }).then(function (res) {
             console.log('Success ' + res.config.data.file.name + 'uploaded. Response: ' + res.data)
@@ -81,7 +81,7 @@ angular.module('createAlbum',['ngFileUpload'])
 	        for (var i = 0; i < files.length; i++) {
 	          Upload.upload({
 	          	url: '/../api/createTrack', 
-	          	data: {file: files[i].trackFile, trackUserName: scope.username, trackNumber: files[i].trackNumber, trackName: files[i].trackName, trackAlbum: scope.albumName, trackArtist: scope.artistEditName, trackArtistImage: scope.currentArtistData.artistImage},
+	          	data: {file: files[i].trackFile, trackUserName: scope.username, trackNumber: files[i].trackNumber, trackName: files[i].trackName, trackAlbum: scope.albumName, trackArtist: scope.artistEditName, trackArtistImage: scope.currentArtistData.artistImage, trackAlbumTrackLength: scope.tracks.length},
 	        		file: files[i].trackFile
 	        	})
 	        }

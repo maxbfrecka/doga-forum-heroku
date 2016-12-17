@@ -17,7 +17,8 @@ const trackSchema = mongoose.Schema({
 		trackGenre: String,
 		trackWavSource: String,
 		trackMp3Source: String,
-		trackDateAdded: Date
+		trackDateAdded: Date,
+		trackAlbumTrackLength: Number
 })
 
 trackSchema.methods.apiRepr = function() {
@@ -38,7 +39,8 @@ trackSchema.methods.apiRepr = function() {
 		trackGenre: this.trackGenre,
 		trackWavSource: this.trackWavSource,
 		trackMp3Source: this.trackMp3Source,
-		trackDateAdded: this.trackDateAdded
+		trackDateAdded: this.trackDateAdded,
+		trackAlbumTrackLength: this.trackAlbumTrackLength
   };
 }
 

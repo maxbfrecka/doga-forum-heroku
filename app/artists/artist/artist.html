@@ -1,19 +1,31 @@
-<h1>CURRENT ARTIST</h1>
-	
-	<p>{{currentArtist.artistName}}</p>
+<div class="artistDisplayHeader">
+<h1>{{currentArtist.artistName}}</h1>
+<img src="https://dogaartists.s3.amazonaws.com/{{currentArtist.artistImage}}">
+</div>
 
-	<img src="https://dogaartists.s3.amazonaws.com/{{currentArtist.artistImage}}">
 
-<br>
 
-<h2>Albums</h2>
+<div class="artistDisplayAlbumsContainer">
 
-	<div ng-repeat="album in albums">
-	<a class="artistDetailAlbumLink" href="/artists/{{currentArtist.artistName | removeSpacesThenLowercase}}/{{album.albumName | removeSpacesThenLowercase}}">
-		<h3>{{album.albumName}}</h3>
-		<img src="https://dogaalbums.s3.amazonaws.com/{{album.albumArt}}">
-	</a>
+	<h2>Albums</h2>
+
+	<div class="artistDisplayAlbums">
+		<div ng-repeat="album in albums">
+		
+				<a class="artistDetailAlbumLink" href="/artists/{{currentArtist.artistName | removeSpacesThenLowercase}}/{{album.albumName | removeSpacesThenLowercase}}">		
+				<div class="artistDisplayAlbumPreview">
+					<h3>{{album.albumName}}</h3>
+					<img src="https://dogaalbums.s3.amazonaws.com/{{album.albumArt}}" height="250" width=250>
+				</div>
+				</a>
+
+		</div>
 	</div>
 
+</div>
 
-<button ng-click="setAlbumArtistEdit(currentArtist.artistName)">Add an Album</button>
+
+
+<div class="artistDisplayEditAddAlbum">
+	<button ng-click="setAlbumArtistEdit(currentArtist.artistName)">Add an Album</button>
+</div>

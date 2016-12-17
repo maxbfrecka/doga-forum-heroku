@@ -52,7 +52,7 @@ app.get('/api/artists/:artistName', (req, res) => {
     });
 });
 //should query TRACKS database for tracks
-app.get('/tracks/:albumArtist/:albumName', (req, res) => {
+app.get('/api/tracks/:albumArtist/:albumName', (req, res) => {
   Track
     .find({trackAlbum: req.params.albumName, trackArtist: req.params.albumArtist})
     .exec()

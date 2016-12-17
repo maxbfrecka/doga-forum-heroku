@@ -1,11 +1,20 @@
-<h1>Artists!!!</h1>
+<div class="artistsDisplayContainer">
+	
 
 
+	<div ng-repeat="artist in artists">
 
 
-<div ng-repeat="artist in artists">
-	<a href="/artists/{{artist.artistName | removeSpacesThenLowercase}}">
-	<h1>{{artist.artistName}}</h1>
+		<a class="artistPreviewLink" href="/artists/{{artist.artistName | removeSpacesThenLowercase}}">
+			<div class="artistPreviewContainer">
+			<h1>{{artist.artistName}}</h1>
 
-	<img src="https://dogaartists.s3.amazonaws.com/{{artist.artistImage}}">
+			<img src="https://dogaartists.s3.amazonaws.com/{{artist.artistImage}}" height="120" width="120">
+		</div>
+		</a>
+
+
+	</div>
+
+
 </div>

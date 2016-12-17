@@ -82,7 +82,8 @@ createAlbum.prototype.uploadFile = function(req, res) {
           albumArt: albumArtPath,
           albumId: albumId,
           albumArtistId: artistId,
-          albumDateAdded: albumDateAdded
+          albumDateAdded: albumDateAdded,
+          albumTrackLength: req.body.albumTrackLength
           }
         )
       .then(album => res.status(204).json({message: 'It worked'}))
