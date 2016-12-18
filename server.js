@@ -55,6 +55,7 @@ app.get('/api/artists/:artistName', (req, res) => {
 app.get('/api/tracks/:albumArtist/:albumName', (req, res) => {
   Track
     .find({trackAlbum: req.params.albumName, trackArtist: req.params.albumArtist})
+    .sort({trackNumber: +1})
     .exec()
     .then(track =>res.json(track))
     .catch(err => {
