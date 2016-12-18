@@ -16,9 +16,7 @@
 		    <input type="text" class="albumEditAddTrackName" placeholder="Track Name" ng-model="track.trackName" required>
 
 		    <button class="button albumEditAddTrackFile" ngf-select ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'"
-		    ngf-accept="'audio/wav'" ngf-max-size="100mb">Choose Wav</button>
-		    <h2>upload progress: {{track.uploadProgress}}
-
+		    ngf-accept="'audio/mp3'" ngf-max-size="30mb" required>Choose Mp3</button>
 
 		    <!-- <div class="button albumEditAddTrackFile" ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'" ngf-max-size="100mb" ngf-accept="'audio/wav'" ngf-select="upload($file)">Upload on file select</div> -->
 	    </div>
@@ -30,13 +28,14 @@
 	    <!-- album art add -->
 	    <button class="button albumEditImageButton" ngf-select ng-model="albumImageFile" name="albumImage" ngf-pattern="'image/*'"
 	    ngf-accept="'image/*'" ngf-max-size="30MB" ngf-min-height="10" 
-	    ngf-resize="{width: 300, height: 300}">Choose Album Cover</button>
+	    ngf-resize="{width: 300, height: 300}" required>Choose Album Cover</button>
 
 	    <button class="addNewTrack" ng-click="addNewTrack()">Add New Track</button>
 
 
 	    <!-- submit -->
 			<button class="albumEditSubmit" type="submit" ng-click="submitAlbum()">Submit</button>
+			<h1>Do Not Change Page For Several Minutes (fix soon)</h1>
 
 
 

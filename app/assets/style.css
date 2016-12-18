@@ -561,8 +561,41 @@ a.musicPlayerCoverLink:hover {
 
 
 
+/*album display*/
+.albumDisplayHeader{
+}
+.albumDisplayAlbumName{
+    font-size:48px;
+}
+
+.albumDisplayArtistLink{
+    color:black;
+}
+.albumDisplayArtistLink:hover{
+    color:grey;
+    text-decoration: none;
+}
 
 
+.albumTracksList{
+    min-width:599px;
+    max-width:599px;
+    background-color:red;
+}
+
+.albumDisplayTrackName{
+    font-size: 20px;
+    color:black;
+    width:598px;
+    min-width:598px;
+    display: inline;
+}
+
+.albumDisplayTrackName:hover{
+    background-color:yellow;
+    color:red;
+    cursor: pointer;
+}
 
 
 
