@@ -44,10 +44,11 @@ angular.module('musicController',[])
 			  				//if there are, then it will load the next song
 			  				//checks if track which just finished is the same track number as the track length
 			  				//if it is not, there are more tracks, so does operation
-			  				if (nowPlayingList.nowPlayingAlbumLength != nowPlayingList.nowPlayingTrackNumber){
+			  				if (nowPlayingList.nowPlayingTrack.trackAlbumTrackLength != nowPlayingList.nowPlayingTrackNumber){
 			  					console.log('next song!')
 				  				
-				  				nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingAlbum.tracks[nowPlayingList.nowPlayingTrackNumber]
+				  				nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingTracks[nowPlayingList.nowPlayingTrack.trackNumber]
+				  				console.log(nowPlayingList.nowPlayingTrack)
 				  				nowPlayingList.nowPlayingTrackNumber = nowPlayingList.nowPlayingTrack.trackNumber
 				  				nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 
@@ -166,6 +167,7 @@ angular.module('musicController',[])
 			  		scope.nowPlayingTrack = nowPlayingList.nowPlayingTrack
 						nowPlayingList.nowPlayingAlbum = null
 						nowPlayingList.nowPlayingArtist= null
+						scope.musicControllerAlbumArtPath = null
 						scope.trackTitle=null
 			  		scope.albumTitle=null
 			  		scope.artistName=null
@@ -174,11 +176,11 @@ angular.module('musicController',[])
 			  	// otherwise goes to the previous track
 	  			} else {
 	  				console.log('to the previous track!')
-		  			nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingAlbum.tracks[nowPlayingList.nowPlayingTrack.trackNumber-2]
-						scope.trackTitle=nowPlayingList.nowPlayingTrack.trackTitle
+		  			nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingTracks[nowPlayingList.nowPlayingTrack.trackNumber-2]
+						scope.trackTitle=nowPlayingList.nowPlayingTrack.trackName
 						//update track number for "next track" mechanism
 			  		nowPlayingList.nowPlayingTrackNumber = nowPlayingList.nowPlayingTrack.trackNumber
-			  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingAlbum.tracks.length
+			  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingTrack.trackAlbumTrackLength
 						nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 		  		}
 		  	}
@@ -193,7 +195,7 @@ angular.module('musicController',[])
 	  	scope.goToNextTrack = function(){
 	  		//checks if last track or not
 	  		//if it is, shuts down the track
-	  		if (nowPlayingList.nowPlayingTrack.trackNumber === nowPlayingList.nowPlayingAlbum.tracks.length){
+	  		if (nowPlayingList.nowPlayingTrack.trackNumber === nowPlayingList.nowPlayingTrack.trackAlbumTrackLength){
 	  			console.log('last track')
 	  			scope.nowPlaying.restart()
   				nowPlayingList.nowPlayingTrack = null
@@ -201,6 +203,7 @@ angular.module('musicController',[])
 			  	scope.nowPlayingTrack = nowPlayingList.nowPlayingTrack
 					nowPlayingList.nowPlayingAlbum = null
 					nowPlayingList.nowPlayingArtist= null
+					scope.musicControllerAlbumArtPath = null
 					scope.trackTitle=null
 		  		scope.albumTitle=null
 		  		scope.artistName=null
@@ -209,11 +212,11 @@ angular.module('musicController',[])
 		  		//otherwise it will go to the next track
 	  		} else {
 	  			console.log('to the next track!')
-	  			nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingAlbum.tracks[nowPlayingList.nowPlayingTrack.trackNumber]
-					scope.trackTitle=nowPlayingList.nowPlayingTrack.trackTitle
+	  			nowPlayingList.nowPlayingTrack = nowPlayingList.nowPlayingTracks[nowPlayingList.nowPlayingTrack.trackNumber]
+					scope.trackTitle=nowPlayingList.nowPlayingTrack.trackName
 					//update track number for "next track" mechanism
 		  		nowPlayingList.nowPlayingTrackNumber = nowPlayingList.nowPlayingTrack.trackNumber
-		  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingAlbum.tracks.length
+		  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingTrack.trackAlbumTrackLength
 					nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 
 	  		}
@@ -257,6 +260,7 @@ angular.module('musicController',[])
 
 
 	nowPlayingList.nowPlayingTrack = null
+	nowPlayingList.nowPlayingTracks = null
 	nowPlayingList.nowPlayingAlbum = null
 	nowPlayingList.nowPlayingArtist= null
 

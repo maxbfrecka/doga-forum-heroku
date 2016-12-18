@@ -29,21 +29,22 @@ createTrack = function() {};
 /* FILES NEED TO BE SAVED BY THEIR TRACK ID TO PREVENT DUPLICATES...*/
 createTrack.prototype.uploadFile = function(req, res) {
   var file = req.files.file;
+  console.log('adding Track on server')
+  console.log(req.body.trackNumber)
   //id for storage
   const trackId = uuid.v4()
-  console.log('adding Track on server')
   //function to add file to Wav Path
   //called in a callback below
   addWavFile = function(trackWavSource){
+    console.log('add File:')
+    console.log(req.body.trackNumber)
     read_file = fs.readFileSync(file.path)
     var params = {Bucket: 'dogatracks', Key: trackWavSource, Body: read_file, ACL:"public-read"}
     s3.putObject(params, function(err, data) {
-      console.log('attemping to upload to S3!')
       if (err) {
         console.log("Error uploading data: ", err)
       } else {
         console.log("Successfully uploaded data to myBucket/myKey")
-        console.log(data)
         //remove local file.
         /*fs.unlink(file.path, function(err) {
             if (err) {console.log(err)}
@@ -58,14 +59,12 @@ createTrack.prototype.uploadFile = function(req, res) {
   var albumId = undefined
   //function to get albumId and artistId
   getAlbumId = function(callback){
-    console.log(req.body.trackAlbum)
     var queryAlbumId = Album.findOne(
       {'albumName': req.body.trackAlbum})
     queryAlbumId.exec(function(err, Album){
       if (err){
         console.log('error in the albumId part')
       } else {
-        console.log(Album.albumId)
         albumId = Album.albumId
         trackAlbumArt = Album.albumArt
         //grab the artistId now...
@@ -91,7 +90,8 @@ createTrack.prototype.uploadFile = function(req, res) {
   }
 
   addTrackToDatabase = function(artistId, albumId, trackAlbumArt, trackWavSource){
-    console.log('inside add to database')
+    console.log('addtodatabase:')
+    console.log(req.body.trackNumber)
     const dateAdded = new Date()
     //defines path for the album art
     //locates album and pushes new track...

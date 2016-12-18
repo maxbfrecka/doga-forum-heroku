@@ -1,4 +1,3 @@
-
 <div class="createAlbumContainer">
 
 <form class="albumEditForm" name="form">
@@ -15,12 +14,8 @@
 
 		    <input type="text" class="albumEditAddTrackName" placeholder="Track Name" ng-model="track.trackName" required>
 
-		    <button class="button albumEditAddTrackFile" ngf-select ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'"
+				<button class="button albumEditAddTrackFile" ngf-select ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'"
 		    ngf-accept="'audio/wav'" ngf-max-size="100mb">Choose Wav</button>
-		    <h2>upload progress: {{track.uploadProgress}}
-
-
-		    <!-- <div class="button albumEditAddTrackFile" ng-model="track.trackFile" name="albumTrack" ngf-pattern="'audio/*'" ngf-max-size="100mb" ngf-accept="'audio/wav'" ngf-select="upload($file)">Upload on file select</div> -->
 	    </div>
 
 

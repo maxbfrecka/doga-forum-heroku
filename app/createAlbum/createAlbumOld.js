@@ -1,5 +1,5 @@
-angular.module('createAlbum',['ngFileUpload', 'uuid'])
-.directive('mxCreateAlbum', ['ngAudio', 'nowPlayingList', 'browseTestData', 'libraryData', '$http', 'Upload', 'addAlbumData', '$location', '$window', 'artistData', 'uuid4', '$timeout', function(ngAudio, nowPlayingList, browseTestData, libraryData, $http, Upload, addAlbumData, $location, $window, artistData, uuid, $timeout){
+angular.module('createAlbumOld',['ngFileUpload'])
+.directive('mxCreateAlbumOld', ['ngAudio', 'nowPlayingList', 'browseTestData', 'libraryData', '$http', 'Upload', 'addAlbumData', '$location', '$window', 'artistData', function(ngAudio, nowPlayingList, browseTestData, libraryData, $http, Upload, addAlbumData, $location, $window, artistData){
 	return {
 		restrict: 'E',
 	  templateUrl: 'createAlbum/createAlbum.html',
@@ -32,29 +32,12 @@ angular.module('createAlbum',['ngFileUpload', 'uuid'])
 	  	scope.tracks = new Array()
 	  	//funtion to add new information to ng-repeat
 	  	scope.addNewTrack = function(){
-	  		//define the id
-	  		// const trackId = uuid.v4()
 	  		scope.getCurrentArtistInfo(scope.artistEditName)
 	  		trackNumber = scope.tracks.length+1
-	  		scope.tracks.push({trackNumber: trackNumber, trackName: '', trackFile: scope.trackFile, trackArtistImage: scope.currentArtistData.artistImage, uploadProgress: scope.uploadProgress})
+	  		scope.tracks.push({trackNumber: trackNumber, trackName: '', trackFile: scope.trackFile, trackArtistImage: scope.currentArtistData.artistImage})
 	  		console.log(scope.tracks)
 
 	  	}
-
-	  	//this uploads the file immediately on selection to amazon S3
-	  	/*scope.upload = function (file) {
-        Upload.upload({
-            url: '/../api/createTrack',
-            data: {file: file, 'username': $scope.username}
-        }).then(function (resp) {
-            console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
-        }, function (resp) {
-            console.log('Error status: ' + resp.status);
-        }, function (evt) {
-            var progressPercentage = parseInt(100.0 * evt.loaded / evt.total);
-            console.log('progress: ' + progressPercentage + '% ' + evt.config.data.file.name);
-        });
-    	};*/
 
 	  	//CALLBACK IS USED INSIDE uploadAlbumArt to UPLOAD TRACKS
 		  scope.submitAlbum = function() {
@@ -97,31 +80,14 @@ angular.module('createAlbum',['ngFileUpload', 'uuid'])
 	    	console.log('angular track upload:')
 	    	console.log(files)
 	      if (files && files.length) {
-	      	var i = -1
-		      	if (i < files.length){
-		      		$timeout(function(){i+=1}, 100)
-			      	scope.$watch(function(){return i},
-					  		function(){
-				        	console.log('angular uploading file!')
-				        	console.log(files[i].trackNumber)
-				          Upload.upload({
-				          	url: '/../api/createTrack', 
-				          	data: {file: files[i].trackFile, trackUserName: scope.username, trackNumber: files[i].trackNumber, trackName: files[i].trackName, trackAlbum: scope.albumName, trackArtist: scope.artistEditName, trackArtistImage: scope.currentArtistData.artistImage, trackAlbumTrackLength: scope.tracks.length},
-				        		file: files[i].trackFile
-				        	}).then(function (res) {
-			            console.log('Success ' + res.config.data.file.name + 'uploaded. Response: ' + res.data)
-			            i+=1
-			            //when this is successful, it should upload the next file.
-				        	}, function (res) {
-			            console.log('Error status: ' + res.status)
-			        		}, function (evt) {
-			            scope.uploadProgress = parseInt(100.0 * evt.loaded / evt.total)
-			            console.log('progress: ' + scope.uploadProgress + '% ' + evt.config.data.file.name)
-			        		})
-					    	}
-					    )
-		      }
-	    	}
+	        for (var i = 0; i < files.length; i++) {
+	          Upload.upload({
+	          	url: '/../api/createTrack', 
+	          	data: {file: files[i].trackFile, trackUserName: scope.username, trackNumber: files[i].trackNumber, trackName: files[i].trackName, trackAlbum: scope.albumName, trackArtist: scope.artistEditName, trackArtistImage: scope.currentArtistData.artistImage, trackAlbumTrackLength: scope.tracks.length},
+	        		file: files[i].trackFile
+	        	})
+	        }
+	      }
 	    }
 
     //call like this

@@ -1,25 +1,6 @@
--fix track uploader for multiple tracks
--playback system fixed
--queue system fixed
--click album works like play button
-- deploy
-
----> unfortunately heroku is a PoS
--did a "post install" for bower stuff ... in the json file
--I have no idea why this isn't working
-
-
-
-
-
-
-
-
-
-
-
-
-
+ISSUES:
+-getting double entries for album art... if an album is titled the same thing twice, mongoose returns the first for the album art on the trackAlbumArt. this means that we need to be able to search for the albumId WITHIN the server.
+-in other words, we should be generating the uuid inside of angular, and passing the artistId to angular. period.
 
 
 

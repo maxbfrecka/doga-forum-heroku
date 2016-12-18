@@ -88,6 +88,7 @@ angular.module('albumDetail',[])
 
 			adc.playTrack = function(track, album, artist){
 				nowPlayingList.nowPlayingTrack = track
+				nowPlayingList.nowPlayingTracks = adc.tracks
 				nowPlayingList.nowPlayingAlbum = album
 				nowPlayingList.nowPlayingArtist = artist
 				nowPlayingList.nowPlayingAlbumLength = adc.tracks.length
