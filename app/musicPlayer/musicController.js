@@ -35,7 +35,7 @@ angular.module('musicController',[])
 			  			
 			  			//this nowPlayingTrackNumber references the next track... actually, adding 1 will return object for current
 			  			//checks if the currentTime is at the end of the song
-			  			if (scope.nowPlaying.remaining==0){
+			  			if (scope.nowPlaying.remaining==1){
 			  				console.log('changing song...')
 			  				console.log(nowPlayingList.nowPlayingTrackNumber)
 			  				console.log(nowPlayingList.nowPlayingAlbum)
