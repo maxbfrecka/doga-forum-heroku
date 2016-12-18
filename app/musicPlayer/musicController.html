@@ -1,3 +1,4 @@
+
 <div class="musicControllerContainer">
 
 
@@ -55,9 +56,9 @@
 
 		<a class="musicPlayerDataLink" href="/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
 			<div class="nowPlayingData">
-				<span>{{trackTitle}}</span>
-				<span>{{albumTitle}}</span>
-				<span>{{artistName}}</span>
+				<div class="dataTrackTitle">{{trackTitle}}</div>
+				<div class="dataTrackAlbum">{{albumTitle}}</div>
+				<div class="dataTrackArtist">{{artistName}}</div>
 			</div>
 		</a>
 

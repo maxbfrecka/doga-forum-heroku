@@ -7,9 +7,9 @@
 
 		<a class="artistPreviewLink" href="/artists/{{artist.artistName | removeSpacesThenLowercase}}">
 			<div class="artistPreviewContainer">
-			<h1>{{artist.artistName}}</h1>
+			<h1 class="artistPreviewName">{{artist.artistName}}</h1>
 
-			<img src="https://dogaartists.s3.amazonaws.com/{{artist.artistImage}}" height="120" width="120">
+			<img class="artistPreviewImage" src="https://dogaartists.s3.amazonaws.com/{{artist.artistImage}}" height="120" width="120">
 		</div>
 		</a>
 

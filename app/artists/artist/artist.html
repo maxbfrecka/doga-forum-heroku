@@ -1,31 +1,41 @@
-<div class="artistDisplayHeader">
-<h1>{{currentArtist.artistName}}</h1>
-<img src="https://dogaartists.s3.amazonaws.com/{{currentArtist.artistImage}}">
+<div class="artistDisplayHeaderContainer">
+	<div class="artistDisplayHeader">
+		<div class="artistDisplayImageContainer">
+			<img class="artistDisplayImage" src="https://dogaartists.s3.amazonaws.com/{{currentArtist.artistImage}}">
+		</div>
+		<h1 class="artistDisplayName">{{currentArtist.artistName}}</h1>
+	</div>
 </div>
 
-
-
 <div class="artistDisplayAlbumsContainer">
-
-	<h2>Albums</h2>
-
+	
+<!-- 	<h2 class=artistDisplayAlbumsHeading>Albums</h2>
+ -->
 	<div class="artistDisplayAlbums">
 		<div ng-repeat="album in albums">
-		
+
+			<div class="artistDisplayAlbumPreview">
 				<a class="artistDetailAlbumLink" href="/artists/{{currentArtist.artistName | removeSpacesThenLowercase}}/{{album.albumName | removeSpacesThenLowercase}}">		
-				<div class="artistDisplayAlbumPreview">
-					<h3>{{album.albumName}}</h3>
-					<img src="https://dogaalbums.s3.amazonaws.com/{{album.albumArt}}" height="250" width=250>
-				</div>
+					<h3 class="artistDisplayAlbumPreviewName">{{album.albumName}}</h3>
+					<img class="artistDisplayAlbumPreviewCover" src="https://dogaalbums.s3.amazonaws.com/{{album.albumArt}}">
 				</a>
+
+				<div class="artistDisplayAlbumPreviewControls">
+					<div class="artistDisplayControlsPlay" ng-click="playAlbum(currentArtist, album)">&#9658;</div>
+					<div class="artistDisplayControlsAdd" ng-click="addAlbum(artistName, albumTitle)"><em>+</em></div>
+				</div>
+
+			</div>
 
 		</div>
 	</div>
 
+
 </div>
-
-
 
 <div class="artistDisplayEditAddAlbum">
-	<button ng-click="setAlbumArtistEdit(currentArtist.artistName)">Add an Album</button>
+	<button class="artistDisplayEditAddAlbumButton" ng-click="setAlbumArtistEdit(currentArtist.artistName)">Add an Album</button>
 </div>
+
+
+

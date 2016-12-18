@@ -1,26 +1,28 @@
 <div class="albumDetailContainer">
 <!-- fix image! -->
-	<img src="https://dogaalbums.s3.amazonaws.com/{{adc.currentAlbum.albumArt}}" width="400" height="400" ng-click="adc.playQueuedTrack()">
+	<img class="albumDetailCover" src="https://dogaalbums.s3.amazonaws.com/{{adc.currentAlbum.albumArt}}" width="500" height="500" ng-click="adc.playQueuedTrack()">
 
-	<div class="albumDisplayHeader">
-		<h1 class="albumDisplayAlbumName" ng-click="adc.playQueuedTrack()">{{adc.currentAlbum.albumName}}</h1>
-		<a class="albumDisplayArtistLink" href="/artists/{{adc.currentArtist.artistName | removeSpacesThenLowercase}}">
-		<h2 class="albumDisplayArtistName">{{adc.currentArtist.artistName}}</h2>
-		</a>
-	</div>
 
-	<div class="albumTracksList" ng-repeat="track in adc.tracks | orderBy: 'trackNumber'">
-		<div class="trackDisplay">
-			<span class="albumDisplayTrackNumber">{{track.trackNumber}}. </span>
-			<span class="albumDisplayTrackName" ng-click="adc.playTrack(track, adc.currentAlbum, adc.currentArtist)">{{track.trackName}}</span>
+	<div class="albumDetailTextContainer">
+		
+		<div class="albumDetailHeader">
+			<h1 class="albumDisplayAlbumName" ng-click="adc.playQueuedTrack()">{{adc.currentAlbum.albumName}}</h1>
+			<a class="albumDisplayArtistLink" href="/artists/{{adc.currentArtist.artistName | removeSpacesThenLowercase}}">
+			<h2 class="albumDisplayArtistName">{{adc.currentArtist.artistName}}</h2>
+			</a>
 		</div>
+
+		<div class="albumTracksListContainer">
+			<div class="albumTracksList" ng-repeat="track in adc.tracks | orderBy: 'trackNumber'">
+				<div class="trackDisplay" ng-click="adc.playTrack(track, adc.currentAlbum, adc.currentArtist)">
+					<span class="albumDisplayTrackNumber">{{track.trackNumber}}. </span>
+					<span class="albumDisplayTrackName">{{track.trackName}}</span>
+				</div>
+			</div>
+		</div>
+
 	</div>
 
-
-
-
-
-
-
-
+	<!-- <div class="albumDetailExtraContainer">
+	</div> -->
 </div>

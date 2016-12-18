@@ -1,6 +1,12 @@
 angular.module('views', ['ngRoute'])
 	.config(['$routeProvider', '$locationProvider',  function($routeProvider, $locationProvider){
-	  $routeProvider.when('/catalog/', {
+	  $routeProvider.when('/', {
+	    templateUrl: 'views/home.html'
+	  })
+	  .when('/home', {
+	    templateUrl: 'views/home.html'
+	  })
+	  .when('/catalog/', {
 	    templateUrl: 'views/main.html'
 	  })
 	  .when('/library', {

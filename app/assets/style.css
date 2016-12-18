@@ -6,31 +6,71 @@ body {
 /*.navbar-nav > li > a {padding-top:10px !important; padding-bottom:10px !important;}
 .navbar {min-height:40px !important}*/
 
+
 li.active {
-    color:purple;
+}
+li:hover{
+
 }
 
 li#navbar_links {
-    border-radius: 20px;
-    color:blue;
+    padding-top:7px;
     font-size:18px;
+    height:40px;
+    color:red;
 }
 .viewContent {
 }
+.container-fluid{
+    background-color:red;
+    height:40px;
+    border-radius:20px;
+    margin-top:3px;
+}
 
+/*if want random colors can use ng-style on this in the navbar*/
+.navbarLink{
+    color:white;
+}
+/*this is from bootstrap, inspect chrome to find this again*/
+.navbar-nav > li > a {
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+#navbar_links{
+    color:none;
+}
+#navbar_links:hover{
+    background-color:green;
+}
+.nav{
+    color:red;
+    height:30px;
+}
 /*remove position fixed if return to prior state*/
 .navbarMargin {
-    margin-top:10px;
+    margin-top:4px;
 /*  position: fixed;
     z-index:1;*/
 }
 
 .navbar-brand {
     font-size:20px;
+    height:40px;
+}
+.navbar-header{
+    height:40px
+    line-height:0px;
 }
 
 .navbar-controller {
     min-width: 1000px;
+    height:30px;
+}
+
+.navbar-nav{
+    height:30px;
+    color:none;
 }
 
 .navbar-default {
@@ -39,12 +79,13 @@ li#navbar_links {
   background-color: red;
   border-radius: 25px;
   max-height:0em;
+  height:20px;
 }
 
 
 .mainContainer {
 	margin-left:30px;
-	margin-top:20px;
+	margin-top:10px;
 }
 
 .headColumns {
@@ -419,8 +460,8 @@ span#time{
 
 .musicPlayerBar {
     background-color:#fff94d;
-    margin-top:10px;
-    margin-bottom:19px;
+    margin-top:7px;
+    margin-bottom:20px;
     padding:3px;
     padding-left:50px;
 }
@@ -429,18 +470,20 @@ span#time{
 .musicControllerContainer{
     max-width:40%;
     min-width:420px;
-    background-color:yellow;
-    margin-left:20px;
+    background-color:#fff94d;
     margin: 0 auto;
+    margin-left:40px;
     text-align: center;
     height:70px;
     padding:2px;
+    padding-top:10px;
     display:inline-block;
-    margin-right:40px;
+    margin-right:120px;
     float:left;
 }
 
 .musicButtonsContainer{
+    background-color:#fff94d;
     display:inline-block;
     float:left;
 }
@@ -458,23 +501,50 @@ span#time{
 }
 
 .musicVolumeContainer{
+    margin-top:10px;
     margin:10px;
     display:inline-block;
 }
 
 .volumeSlider {
     display:inline-block;
+    margin-top:17px;
+}
+
+/*setting styles to the range*/
+input[type=range] {
+  -webkit-appearance: none
+}
+input[type='range']::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #ecf0f1;
+    background-color:black;
+    border: 1px solid #bdc3c7;
+    width: 17px;
+    height: 17px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+input[type=range] {
+  -webkit-appearance: none;
+  width: 100%;
+  border-radius: 8px;
+  height: 4px;
+  border: 1px solid #bdc3c7;
+  background-color: black; 
 }
 
 
-
-
-
 .musicPlayerContainer{
+    /*
+    uncomment for assistance
+    border-style:solid;
+    border-color:black;
+    border-width:1px;*/
     margin-left:20px;
-    max-width:50%;
-    min-width:50%;
-    background-color:yellow;
+    max-width:55%;
+    min-width:55%;
+    background-color:#fff94d;
     margin: 0 auto;
     text-align: center;
     height:70px;    
@@ -485,16 +555,22 @@ span#time{
 .musicPlayerArtIconContainer {
     margin:2px;
     margin-top:4px;
-    margin-right:8px;
-    padding:3px;
+    margin-right:0px;
+    margin-left:8px;
     background-color:white;
     display:inline-block;
+    float:left;
+    border:none;
 }
 
 .musicPlayerAlbumArtIcon {
-    height:50px;
-    width:50px;
+    height:70px;
+    width:70px;
     display:inline-block;
+    border:none;
+}
+.musicPlayerCoverLink{
+    background-color:white;
 }
 
 .musicPlayerTimeContainer {
@@ -503,30 +579,31 @@ span#time{
     height:40px;
     background-color:white;
     margin: 0 auto;
-    text-align: center;
+    margin-top:10px;
     display:inline-block;
 }
 
 .timeDisplayContainerCurrent {
     columns: 3;
-    padding:5px;
-    margin:4px;
+    padding:1px;
+    margin-right:4px;
     width:30px;
     height:30px;
     display:inline-block;
 }
 
 .timeDisplayContainerRemaining {
-    padding:5px;
-    margin:4px;
+    padding:1px;
+    margin-left:4px;
     width:30px;
     height:30px;
     display:inline-block;
 }
 
 .timeRangeContainer {
-    min-width:60%;
+    min-width:70%;
     padding:5px;
+    padding-top:18px;
     display:inline-block;
 }
 
@@ -539,10 +616,6 @@ span#time{
 .musicPlayerRemainingTimeDisplay {
 }
 
-.nowPlayingData {
-    background-color:red;
-}
-
 a.musicPlayerDataLink {
     color:black;
 }
@@ -551,21 +624,86 @@ a.musicPlayerDataLink:hover {
     text-decoration:none
 }
 a.musicPlayerCoverLink {
-    color:black;
+    color:white;
+    background-color:white;
+    border-width:0px;
+
 }
 a.musicPlayerCoverLink:hover {
     color:black;
     text-decoration:none
 }
 
+.nowPlayingData{
+    display:inline-block;
+}
+.dataTrackTitle{
+    display:inline-block;
+    margin-left:35px;
+    margin-right:35px;
+}
+.dataTrackAlbum{
+    display:inline-block;
+    margin-left:35px;
+    margin-right:35px;
+}
+.dataTrackArtist{
+    display:inline-block;
+    margin-left:35px;
+    margin-right:35px;
+}
 
 
 
 /*album display*/
-.albumDisplayHeader{
+.albumDetailContainer{
+    min-width:1300px;
+    background-color:#0052cc;
+    margin-left:20px;
+    margin-right:20px;
+    border-radius:5px;
 }
+
+
+.albumDetailCover{
+    position:relative;
+    margin-left:77px;
+    margin-top:50px;
+    margin-bottom:77px;
+    float:left;
+    display:inline-block;
+}
+
+.albumDetailCover:hover{
+    border-width:3px;
+    border-color:blue;
+    border-style:solid;
+}
+
+.albumDetailTextContainer{
+    position:relative;
+    padding:10px;
+    margin-left:123px;
+    display:inline-block;
+    /*border-style:solid;
+    border-color:black;
+    border-width:1px;*/
+    margin-bottom:100px;
+    margin-top:50px;
+    background-color:yellow;
+}
+
+.albumDetailHeader{
+    background-color: yellow;
+    padding:5px;
+    padding-left:20px;
+}
+
 .albumDisplayAlbumName{
     font-size:48px;
+}
+.albumDisplayAlbumName:hover{
+    color:grey;
 }
 
 .albumDisplayArtistLink{
@@ -576,11 +714,21 @@ a.musicPlayerCoverLink:hover {
     text-decoration: none;
 }
 
-
 .albumTracksList{
-    min-width:599px;
-    max-width:599px;
+    min-width:510px;
+    max-width:550px;
     background-color:red;
+    position: relative;
+    padding:1px;
+    padding-left:10px;
+}
+
+.trackDisplay{
+    background-color:red;
+}
+
+.trackDisplay:hover{
+    background-color:yellow;
 }
 
 .albumDisplayTrackName{
@@ -593,8 +741,14 @@ a.musicPlayerCoverLink:hover {
 
 .albumDisplayTrackName:hover{
     background-color:yellow;
-    color:red;
     cursor: pointer;
+}
+
+.albumDetailExtraContainer{
+    background-color:orange;
+    width:1000px;
+    height:200px;
+    display:flex;
 }
 
 
@@ -683,24 +837,28 @@ a.musicPlayerCoverLink:hover {
 
 
 .artistPreviewLink {
-    color:white;
+    color:black;
 }
 
 .artistsDisplayContainer{
-    display:inline;
+    display:inline-block;
     padding:20px;
     margin:20px;
+    margin-top:4px;
     border-radius:10px;
     border-style:solid;
     border-width:0px;
-    background-color:#fff91d;
-    min-height:5000px;
+    background-color:red;
+    min-height:500px;
+    height:500px;
+    width:95%;
+    min-width:1000px;
     position:relative;
 }
 
 .artistPreviewContainer{
     float:left;
-    background-color:black;
+    background-color:white;
     display:inline-block;
     max-height: 240px;
     max-width:240px;
@@ -710,30 +868,159 @@ a.musicPlayerCoverLink:hover {
     padding:10px;
     border-radius:10px;
 }
+.artistPreviewContainer:hover{
+    border-size:2px;
+    border-color:yellow;
+    border-style:bold;
+    background-color:#ff9977;
+}
+
+
+/*artist page*/
+.artistDisplayHeaderContainer{  
+}
+
+.artistPreviewName{
+    font-size:30px;
+    margin-left:20px;
+}
+
+.artistPreviewImage{
+    margin-left:40px;
+}
+
+
+
+.artistDisplayHeader{
+    margin-left:30px;
+    margin:20px;
+    margin-top:5px;
+    background-color:white;
+    height:90px;
+    display:inline;
+    padding:10px;
+    float:left;
+}
+.artistDisplayImageContainer{
+    float:left;
+    padding:3px;
+}
+.artistDisplayImage{
+    float:left;
+    height:70px;
+    width:70px;
+    display:inline-block;
+}
+.artistDisplayName{
+    font-size:70px;
+    height:77px;
+    margin-left:10px;
+    margin-right:40px;
+    display:inline;
+}
+
 
 .artistDisplayAlbumsContainer{
-    display:inline;
-    min-height:1000px;
+    border-radius:3px;
+    display:inline-block;
+    min-height:470px;
+    max-width:1500px;
+    min-width:1300px;
+    background-color:red;
+    margin-left:20px;
+    padding:20px;
 }
 
 .artistDisplayAlbums{
     display:inline;
 }
+.artistDisplayAlbumsHeading{
+    font-size:40px;
+    margin-left:30px;
+}
 
 .artistDisplayAlbumPreview{
     float:left;
     display:inline-block;
-    max-height:320px;
-    max-width:320px;
-    height:320px;
-    width:320px;
-    margin:15px;
-    padding:5px;
+    max-height:340px;
+    max-width:340px;
+    height:340px;
+    width:340px;
+    margin:25px;
+    padding-bottom:0px;
     background-color:white;
 }
+.artistDisplayAlbumPreview:hover{
+    background-color:rgb(255, 248, 255);
+}
+.artistDisplayAlbumPreviewName{
+    height:40px;
+    min-height:40px;
+    max-height:40px;
+    margin:20px;
+    margin-bottom:5px;
+    display:inline-block;
+}
+.artistDisplayAlbumPreviewCover{
+    height:240px;
+    width:240px;
+    margin-left:49px;
+    margin-bottom:25px;
+}
+.artistDisplayAlbumPreviewControls{
+    background-color:white;
+    height:47px;
+}
+.artistDisplayControlsPlay{
+    font-size:25px;
+    padding-left:70px;
+    padding-top:4px;
+    background-color:white;
+    min-height:47px;
+    width:170px;
+    float:left;
+}
+.artistDisplayControlsPlay:hover{
+    background-color:#99ffcc;
+    cursor:pointer;
+}
+.artistDetailAlbumLink{
+    color:black;
+}
+.artistDetailAlbumLink:hover{
+    color:black;
+}
+.artistDisplayControlsAdd{
+    font-size:26px;
+    padding-left:70px;
+    padding-bottom:10px;
+    background-color:white;
+    min-height:40px;
+    width:170px;
+    float:left;
+    font-weight:bold;
+}
+.artistDisplayControlsAdd:hover{
+    background-color:#99ffcc;
+    cursor:pointer;
+}
+/*.artistDisplayAlbumPreview:hover{
+    border-size:4px;
+    border-color:yellow;
+    border-style:solid;
+}*/
+
+
 
 
 .artistDisplayEditAddAlbum{
-    margin:50px;
     display:inline-block;
+    position:relative;
+    margin:10px;
+}
+
+.artistDisplayEditAddAlbumButton{
+    display:inline-block;
+    width:300px;
+    margin:10px;
 }

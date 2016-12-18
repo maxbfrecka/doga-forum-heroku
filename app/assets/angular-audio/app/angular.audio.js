@@ -431,15 +431,25 @@ angular.module('ngAudio', [])
 
             output = minutes + ":" + seconds;
 
+        } else if (totalSec >9){
+
+            seconds = totalSec;
+
+            if (seconds.toString().length == 1) {
+                seconds = "00" + (totalSec).toString();
+            }
+
+            output = "0:"+ totalSec;
+
         } else {
 
             seconds = totalSec;
 
             if (seconds.toString().length == 1) {
-                seconds = "0" + (totalSec).toString();
+                seconds = "00" + (totalSec).toString();
             }
 
-            output = totalSec + "s";
+            output = "0:0"+ totalSec;
 
         }
         

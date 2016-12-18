@@ -1,5 +1,5 @@
 angular.module('artist', [])
-.directive('mxArtist', ['ngAudio', 'nowPlayingList', 'browseTestData', 'libraryData', '$http', 'Upload', 'artistData', '$routeParams', '$location', 'addAlbumData', 'albumData', function(ngAudio, nowPlayingList, browseTestData, libraryData, $http, Upload, artistData, $routeParams, $location, addAlbumData, albumData){
+.directive('mxArtist', ['ngAudio', 'nowPlayingList', 'browseTestData', 'libraryData', '$http', 'Upload', 'artistData', '$routeParams', '$location', 'addAlbumData', 'albumData', 'trackData', function(ngAudio, nowPlayingList, browseTestData, libraryData, $http, Upload, artistData, $routeParams, $location, addAlbumData, albumData, trackData){
 	return {
 		restrict: 'E',
 	  templateUrl: 'artists/artist/artist.html',
@@ -15,6 +15,8 @@ angular.module('artist', [])
 	  	scope.editAddAlbum = false
 
 	  	scope.artists = ''
+	  	scope.currentArtist = ''
+	  	scope.tracks = ''
 
 	  	getArtists();
 	    function getArtists() {
@@ -52,6 +54,20 @@ angular.module('artist', [])
 	    	})
 	    }
 
+	    //needs to take NAME of artist and NAME of album to put into api url exactly
+	    function getTracks(albumArtist, albumName, callback){
+	    	trackData.getTracks(albumArtist, albumName)
+	    	.then(function (response){
+	    		scope.tracks = response.data
+	    		trackData.tracks = scope.tracks
+	    		console.log(response)
+	    		console.log(scope.tracks)
+	    		callback()
+	    	}, function(error){
+	    		console.log('tracks failed to load')
+	    	})
+	    }
+
 
 	    //function to set current artist that is being edited
 	    //then changes to create album page, where you will use that data!
@@ -59,6 +75,22 @@ angular.module('artist', [])
 	    	addAlbumData.setAlbumArtistEdit(artist)
 	    	$location.path('/createAlbum')
 	    }
+
+	    scope.playAlbum = function(artist, album){
+	    	const _artist = artist
+	    	const _album = album
+	    	getTracks(_artist.artistName,_album.albumName, function(){
+	    		console.log(scope.tracks)
+	    		nowPlayingList.nowPlayingArtist = scope.currentArtist
+	    		nowPlayingList.nowPlayingAlbum = album
+	    		nowPlayingList.nowPlayingTrack = scope.tracks[0]
+					nowPlayingList.nowPlayingAlbumLength = scope.tracks[0].trackAlbumTrackLength
+					nowPlayingList.nowPlayingTrackNumber = nowPlayingList.nowPlayingTrack.trackNumber
+					// tracknumber system needs improvemen
+					//registers change
+					nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
+	    	})
+	  	}
 			
 
 	  },

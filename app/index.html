@@ -13,25 +13,7 @@
 
 <body>
 
-<div class="navbarMargin">
-	<div class="navbar-controller">
-		<nav class="navbar navbar-default">
-		  <div class="container-fluid">
-		    <div class="navbar-header">
-		      <a class="navbar-brand" href="/">MX-FORUM</a>
-		    </div>
-		    <ul class="nav navbar-nav">
-		      <li id="navbar_links" class="active"><a href="/catalog">CATALOG</a></li>
-		      <li id="navbar_links" class="active"><a href="/browse">BROWSE</a></li>
-		      <li id="navbar_links" class="active"><a href="/artists">ARTISTS</a></li>
-		     <!--  <li id="navbar_links" class="active"><a href="/app/#/library/">LIBRARY</a></li> -->
-		      <li id="navbar_links" class="active"><a href="/createArtist/">CREATE ARTIST</a></li>
-		      <li id="navbar_links" class="active"><a href="/login">LOG IN / SIGN UP</a></li>
-		    </ul>
-		  </div>
-		</nav>
-	</div>
-</div>
+<mx-navigation-bar></mx-navigation-bar>
 
 <div class="musicPlayerBar">
 	<mx-music-controller></mx-music-controller>
@@ -83,6 +65,7 @@
 
 
 	<script src="./app.js"></script>
+	<script src="./navigationBar/navigationBar.js"></script>
 	<script src="./catalog/catalog.js"></script>
 	<script src="./thread/thread.js"></script>
 	<script src="./thread/newReply/new-reply.js"></script>

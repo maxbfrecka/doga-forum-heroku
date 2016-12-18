@@ -121,6 +121,9 @@ angular.module('albumDetail',[])
 	  		nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 	  	}
 
+	  	
+
+
 
 	  }
 	}
