@@ -1,9 +1,9 @@
 <div class="albumDetailContainer">
 <!-- fix image! -->
-	<img src="https://dogaalbums.s3.amazonaws.com/{{adc.currentAlbum.albumArt}}" width="400" height="400">
+	<img src="https://dogaalbums.s3.amazonaws.com/{{adc.currentAlbum.albumArt}}" width="400" height="400" ng-click="adc.playQueuedTrack()">
 
 	<div class="albumDisplayHeader">
-		<h1 class="albumDisplayAlbumName">{{adc.currentAlbum.albumName}}</h1>
+		<h1 class="albumDisplayAlbumName" ng-click="adc.playQueuedTrack()">{{adc.currentAlbum.albumName}}</h1>
 		<a class="albumDisplayArtistLink" href="/artists/{{adc.currentArtist.artistName | removeSpacesThenLowercase}}">
 		<h2 class="albumDisplayArtistName">{{adc.currentArtist.artistName}}</h2>
 		</a>

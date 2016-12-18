@@ -35,7 +35,7 @@ angular.module('musicController',[])
 			  			
 			  			//this nowPlayingTrackNumber references the next track... actually, adding 1 will return object for current
 			  			//checks if the currentTime is at the end of the song
-			  			if (scope.nowPlaying.remaining==1){
+			  			if (scope.nowPlaying.remaining==0){
 			  				console.log('changing song...')
 			  				console.log(nowPlayingList.nowPlayingTrackNumber)
 			  				console.log(nowPlayingList.nowPlayingAlbum)
@@ -147,9 +147,11 @@ angular.module('musicController',[])
 	  		nowPlayingList.nowPlayingTrack = nowPlayingList.queuedTrack
 	  		nowPlayingList.nowPlayingAlbum = nowPlayingList.queuedAlbum
 	  		nowPlayingList.nowPlayingArtist = nowPlayingList.queuedArtist
+	  		nowPlayingList.nowPlayingTracks = nowPlayingList.queuedTracks
 	  		//update track number for "next track" mechanism
 	  		nowPlayingList.nowPlayingTrackNumber = nowPlayingList.queuedTrack.trackNumber
-	  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingAlbum.tracks.length
+	  		nowPlayingList.nowPlayingAlbumTrackLength = nowPlayingList.nowPlayingTrack.trackAlbumTrackLength
+	  		scope.musicControllerAlbumArtPath = 'https://dogaalbums.s3.amazonaws.com/'+nowPlayingList.nowPlayingTrack.trackAlbumArt
 	  		//send message to watcher
 	  		nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 
@@ -271,6 +273,7 @@ angular.module('musicController',[])
 	
 
 	nowPlayingList.queuedTrack = null
+	nowPlayingList.queuedTracks = null
 	nowPlayingList.queuedAlbum = null
 	nowPlayingList.queuedArtist = null
 	//on click:

@@ -10,7 +10,7 @@ angular.module('albumDetail',[])
 	  	window.scrollTo(0, 0)
 	  	scope.test = "FFFFFUUUU"
 	  },
-	  controller: function(ngAudio){
+	  controller: function(ngAudio, $scope){
 	  	var adc = this
 
 	  	adc.artists = ''
@@ -82,9 +82,17 @@ angular.module('albumDetail',[])
 
 	    //for play button without pressing track, 
 	    //or for clicking on album art
-	    nowPlayingList.queuedAlbum = adc.currentAlbum
-			nowPlayingList.queuedArtist = adc.currentArtist
-			nowPlayingList.queuedTrack = adc.tracks[0]
+	    $scope.$watch(function(){return adc.tracks},
+	    	function(){
+	    		console.log('setting queue')
+	    		console.log(adc.tracks)
+	    		nowPlayingList.queuedAlbum = adc.currentAlbum
+					nowPlayingList.queuedArtist = adc.currentArtist
+					nowPlayingList.queuedTrack = adc.tracks[0]
+					nowPlayingList.queuedTracks = adc.tracks
+					console.log(adc.tracks[0])
+				}
+			)
 
 			adc.playTrack = function(track, album, artist){
 				nowPlayingList.nowPlayingTrack = track
@@ -97,6 +105,21 @@ angular.module('albumDetail',[])
 				//registers change
 				nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
 			}
+
+			//these things could be put into factory...
+			adc.playQueuedTrack = function(){
+	  		//sets current track to queued track, whatever it is
+	  		//also sets now playing artist, now playing album
+	  		console.log(nowPlayingList.queuedAlbum)
+	  		console.log(nowPlayingList.queuedTrack)
+	  		nowPlayingList.nowPlayingTrack = nowPlayingList.queuedTrack
+	  		nowPlayingList.nowPlayingAlbum = nowPlayingList.queuedAlbum
+	  		nowPlayingList.nowPlayingArtist = nowPlayingList.queuedArtist
+	  		nowPlayingList.nowPlayingTracks = nowPlayingList.queuedTracks
+	  		//update track number for "next track" mechanism
+	  		//send message to watcher
+	  		nowPlayingList.nowPlayingChange = !nowPlayingList.nowPlayingChange
+	  	}
 
 
 	  }
