@@ -1024,3 +1024,24 @@ a.musicPlayerCoverLink:hover {
     width:300px;
     margin:10px;
 }
+
+
+
+
+
+
+
+
+.userSheetContainer{
+    min-width:1000px;
+    min-height:500px;
+    padding:20px;
+}
+.signupOffer{
+    background-color:red;
+    color:yellow;
+}
+.signupInput{
+    width:300px;
+    height:100px;
+}

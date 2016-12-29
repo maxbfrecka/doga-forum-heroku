@@ -84,6 +84,7 @@ angular.module('artist', [])
 	    		nowPlayingList.nowPlayingArtist = scope.currentArtist
 	    		nowPlayingList.nowPlayingAlbum = album
 	    		nowPlayingList.nowPlayingTrack = scope.tracks[0]
+	    		nowPlayingList.nowPlayingTracks = scope.tracks
 					nowPlayingList.nowPlayingAlbumLength = scope.tracks[0].trackAlbumTrackLength
 					nowPlayingList.nowPlayingTrackNumber = nowPlayingList.nowPlayingTrack.trackNumber
 					// tracknumber system needs improvemen

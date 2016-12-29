@@ -8,6 +8,8 @@ angular.module('navigationBar', [])
 	  controllerAs: "nbc",
 	  
 	  link: function(scope, element, attrs){
+
+	  	//color system
 	  	scope.navColor0 = randomRGBcolor()
 	  	scope.navColor1 = randomRGBcolor()
 	  	scope.navColor2 = randomRGBcolor()

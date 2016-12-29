@@ -1,5 +1,5 @@
 angular.module('signUp',[])
-.directive('mxSignUp', ['ngAudio', 'browseTestData', '$routeParams', '$location', 'nowPlayingList', 'libraryData', '$timeout', function(ngAudio, browseTestData, $routeParams, $location, nowPlayingList, libraryData, $timeout){
+.directive('mxSignUp', ['$http', function($http){
 	return {
 		restrict: 'E',
 	  templateUrl: 'signUp/signUp.html',
@@ -8,8 +8,23 @@ angular.module('signUp',[])
 	  controllerAs: "suc",
 	  link: function(scope, element, attrs){
 
+	  	scope.passwordCheck=0
 
-	  	
-	  }
+	  	scope.signUp = function() {
+	  		if (scope.newPasswordA===scope.newPasswordB){
+		  		var request = {
+	        	username: scope.newUsername,
+	        	password: scope.newPasswordA
+	      	}
+	      	return $http.post('/../api/signUp', {method: 'JSON', params:request});
+    		} else {
+    			//set passwordCheck to alert user that passwords do not patch
+    			scope.passwordCheck=1
+    		}
+		  }
+
+
+
+		}
 	}
 }])

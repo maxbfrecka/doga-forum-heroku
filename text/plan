@@ -1,3 +1,60 @@
+I want people to have screennames and accounts to upload their albums.
+I want eventually an ability to customize their album/artist pages
+They create an artist when they are logged in
+When they post on forum, it uses their SN
+People can click their SN to go to their social page
+Critics system
+money eventually
+
+-protected endpoints
+-
+
+
+
+when you log in, you can see:
+-your account page
+-list of artists you created
+-on artist pages you created, you can edit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ISSUES:
 -getting double entries for album art... if an album is titled the same thing twice, mongoose returns the first for the album art on the trackAlbumArt. this means that we need to be able to search for the albumId WITHIN the server.
 -in other words, we should be generating the uuid inside of angular, and passing the artistId to angular. period.

@@ -6,14 +6,17 @@ const path = require('path')
 const multer = require('multer')
 const upload = multer({ dest: __dirname+'/backend/file-system/artists'})
 const fs = require('fs')
+const morgan = require('morgan');
 const multiparty = require('multiparty')
-
+const passport = require('passport')
+const {BasicStrategy} = require('passport-http');
+const bcrypt = require('bcryptjs');
 const dotenv = require('dotenv').config()
-
 const AWS = require('aws-sdk');
 //set up database
 mongoose.Promise = global.Promise;
 const {PORT, DATABASE_URL} = require('./backend/config');
+const {User} = require('./backend/models/userModel');
 const {Artist} = require('./backend/models/artistModel');
 const {Album} = require('./backend/models/albumModel');
 const {Track} = require('./backend/models/trackModel');
@@ -24,19 +27,25 @@ const multipartyMiddleware = multipart(),
 createArtist = require('./backend/uploaders/createArtist');
 createAlbum = require('./backend/uploaders/createAlbum');
 createTrack = require('./backend/uploaders/createTrack');
-
+createUser = require('./backend/uploaders/createUser')
 const app = express()
+//logging
+app.use(morgan('common'));
 app.use(express.static(__dirname+'/app/'))
 app.use(bodyParser.json());
 
-//set this up properly
-/*var accessKeyId =  process.env.AWS_ACCESS_KEY || "xxxxxx";
-var secretAccessKey = process.env.AWS_SECRET_KEY || "+xxxxxx+B+xxxxxxx";
-AWS.config.update({
-    accessKeyId: accessKeyId,
-    secretAccessKey: secretAccessKey
+
+
+
+
+
+//user system
+app.get('api/users', (req,res) => {
+
 });
-var s3 = new AWS.S3();*/
+app.post('api/signUp', (req,res) =>{
+
+})
 
 
 
@@ -127,8 +136,6 @@ app.use('/*', express.static(__dirname + '/app/assets/' ));
 //adds bootstrap CSS
 app.use('/*', express.static(__dirname + '/app/bower_components/bootstrap/dist/' ));
 app.all('/*', (req, res) => res.sendFile(path.join(__dirname, './app', 'index.html')))
-
-
 
 
 mongoose.connect('mongodb://maxbfrecka:Shug1234@ds133398.mlab.com:33398/mxforum')

@@ -1,0 +1,21 @@
+<div class="userSheetContainer">
+
+	<form ng-submit="signUp()">
+
+		<input class="signupInput" type="username" name="username" ng-model="newUsername" placeholder="Input Username" required>
+		<br>
+		<input class="signupInput" type="password" name="password" ng-model="newPasswordA" placeholder="Input Password" required>
+		<br>
+		<input class="signupInput" type="password" name="password" ng-model="newPasswordB" placeholder="Input Password Again" required>
+		<br>
+		<h2 ng-if="passwordCheck==1">Please Retype Matching Password</h2>
+		<br>
+		<!-- <input type="text" name="password" ng-model="email" placeholder="Input Email" required> -->
+
+		<button>Sign Up</button>
+
+	</form>
+
+	<br>
+
+</div>
