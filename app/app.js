@@ -1,5 +1,5 @@
 angular.module('myApp', ['firebase', 
-  'catalog', 'thread', 'threadPreview', 'newPost', 'views', 'newReply', 'canvasBot', 'canvasTest', 'browse', 'ngAudio', 'musicPlayer', 'musicController', 'albumPreview', 'albumDetail', 'myLibrary', 'createAlbum', 'ngFileUpload', 'login', 'signUp', 'createArtist', 'artists', 'artist', 'uploadTester', 'navigationBar'])
+  'catalog', 'thread', 'threadPreview', 'newPost', 'views', 'newReply', 'canvasBot', 'canvasTest', 'browse', 'ngAudio', 'musicPlayer', 'musicController', 'albumPreview', 'albumDetail', 'myLibrary', 'createAlbum', 'ngFileUpload', 'signIn', 'signUp', 'createArtist', 'artists', 'artist', 'uploadTester', 'navigationBar'])
 
 
 

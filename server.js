@@ -1,51 +1,87 @@
-'use strict';
+'use strict'
 const express = require('express')
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
+const cookieParser = require('cookie-parser')
+const mongoose = require('mongoose')
 const path = require('path')
 const multer = require('multer')
 const upload = multer({ dest: __dirname+'/backend/file-system/artists'})
 const fs = require('fs')
-const morgan = require('morgan');
+const morgan = require('morgan')
 const multiparty = require('multiparty')
 const passport = require('passport')
-const {BasicStrategy} = require('passport-http');
-const bcrypt = require('bcryptjs');
+const {BasicStrategy} = require('passport-http')
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs')
+const flash = require('connect-flash')
+const session = require('express-session')
+const expressValidator = require('express-validator')
 const dotenv = require('dotenv').config()
-const AWS = require('aws-sdk');
+const AWS = require('aws-sdk')
 //set up database
 mongoose.Promise = global.Promise;
-const {PORT, DATABASE_URL} = require('./backend/config');
-const {User} = require('./backend/models/userModel');
-const {Artist} = require('./backend/models/artistModel');
-const {Album} = require('./backend/models/albumModel');
-const {Track} = require('./backend/models/trackModel');
+const {PORT, DATABASE_URL} = require('./backend/config')
+const {User} = require('./backend/models/userModel')
+const {Artist} = require('./backend/models/artistModel')
+const {Album} = require('./backend/models/albumModel')
+const {Track} = require('./backend/models/trackModel')
 //file upload
-const multipart = require('connect-multiparty');
-const multipartyMiddleware = multipart(),
+const multipart = require('connect-multiparty')
+const multipartyMiddleware = multipart()
 // file upload
-createArtist = require('./backend/uploaders/createArtist');
-createAlbum = require('./backend/uploaders/createAlbum');
-createTrack = require('./backend/uploaders/createTrack');
+createArtist = require('./backend/uploaders/createArtist')
+createAlbum = require('./backend/uploaders/createAlbum')
+createTrack = require('./backend/uploaders/createTrack')
 createUser = require('./backend/uploaders/createUser')
+
+
 const app = express()
 //logging
-app.use(morgan('common'));
+app.use(morgan('common'))
 app.use(express.static(__dirname+'/app/'))
-app.use(bodyParser.json());
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false })) //dunno what this does
+app.use(cookieParser())
 
 
+// User System
+/*// Express Session
+app.use(session({
+    secret: 'secret',
+    saveUninitialized: true,
+    resave: true
+}));
+// Express Validator
+app.use(expressValidator({
+  errorFormatter: function(param, msg, value) {
+      var namespace = param.split('.')
+      , root    = namespace.shift()
+      , formParam = root;
 
+    while(namespace.length) {
+      formParam += '[' + namespace.shift() + ']';
+    }
+    return {
+      param : formParam,
+      msg   : msg,
+      value : value
+    };
+  }
+}));
+// Connect Flash
+app.use(flash());
+// Global Vars
+app.use(function (req, res, next) {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  res.locals.error = req.flash('error');
+  res.locals.user = req.user || null;
+  next();
+});*/
+//Router to Users
+const {router: usersRouter} = require('./backend/routers/userRouter');
+app.use('/api/users/', usersRouter);
 
-
-
-//user system
-app.get('api/users', (req,res) => {
-
-});
-app.post('api/signUp', (req,res) =>{
-
-})
 
 
 

@@ -1,5 +1,5 @@
 angular.module('signUp',[])
-.directive('mxSignUp', ['$http', function($http){
+.directive('mxSignUp', ['$http', '$location', function($http, $location){
 	return {
 		restrict: 'E',
 	  templateUrl: 'signUp/signUp.html',
@@ -12,11 +12,19 @@ angular.module('signUp',[])
 
 	  	scope.signUp = function() {
 	  		if (scope.newPasswordA===scope.newPasswordB){
-		  		var request = {
-	        	username: scope.newUsername,
-	        	password: scope.newPasswordA
-	      	}
-	      	return $http.post('/../api/signUp', {method: 'JSON', params:request});
+	      	var dataObj = {
+							username : scope.newUsername,
+							password : scope.newPasswordA
+					}
+					var res = $http.post('../api/users/signUp', dataObj);
+					res.success(function(data, status, headers, config) {
+						scope.message = data;
+						$location.path('/');
+					});
+					res.error(function(data, status, headers, config) {
+						alert( "failure message: " + JSON.stringify({data: data}));
+					});
+
     		} else {
     			//set passwordCheck to alert user that passwords do not patch
     			scope.passwordCheck=1

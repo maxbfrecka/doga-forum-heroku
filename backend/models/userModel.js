@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
+const bcrypt = require('bcryptjs')
 
 //track schema
 
-const userSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
 		username: {
         type: String,
         required: true,
@@ -14,15 +15,26 @@ const userSchema = mongoose.Schema({
     }
 })
 
-userSchema.methods.apiRepr = function() {
-
+UserSchema.methods.apiRepr = function() {
   return {
-    id: this._id,
-    userName: this.userName,
-		
+    username: this.username || '',
+    firstName: this.firstName || '',
+    lastName: this.lastName || ''
   };
 }
 
-const User = mongoose.model('user', userSchema);
+UserSchema.methods.validatePassword = function(password) {
+  return bcrypt
+    .compare(password, this.password)
+    .then(isValid => isValid);
+}
+
+UserSchema.statics.hashPassword = function(password) {
+  return bcrypt
+    .hash(password, 10)
+    .then(hash => hash);
+}
+
+const User = mongoose.model('User', UserSchema);
 
 module.exports = {User};
