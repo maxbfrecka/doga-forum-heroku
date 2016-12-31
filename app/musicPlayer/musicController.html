@@ -31,7 +31,15 @@
 
 <div class="musicPlayerContainer">
 
-		<a class="musicPlayerCoverLink" href="/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
+
+
+		<!-- if no album playing, links to artists page -->
+		<a ng-if="!musicControllerAlbumArtPath" class="musicPlayerCoverLink" href="/artists/">
+			<div class="musicPlayerArtIconContainer">
+				<img class="musicPlayerAlbumArtIcon" src="{{musicControllerAlbumArtPath}}">
+			</div>
+		</a>
+		<a ng-if="musicControllerAlbumArtPath" class="musicPlayerCoverLink" href="/artists/{{artistName | removeSpacesThenLowercase}}/{{albumTitle | removeSpacesThenLowercase}}">
 			<div class="musicPlayerArtIconContainer">
 				<img class="musicPlayerAlbumArtIcon" src="{{musicControllerAlbumArtPath}}">
 			</div>

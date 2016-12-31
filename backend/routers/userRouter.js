@@ -29,8 +29,8 @@ const strategy = new BasicStrategy(
       .catch(err => cb(err))
 });
 
-passport.use(strategy);
 
+passport.use(strategy);
 
 router.post('/signUp', (req, res) => {
 	console.log("RECEIVED POST REQUEST!")
@@ -118,6 +118,9 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
     .findOne({username: username})
     .exec()
     .then(_user => {
+    	if (!_user){
+    		return callback(null, false, {message: 'Incorrect username'});
+    	}
       user = _user;
       if (!user) {
         return callback(null, false, {message: 'Incorrect username'});
@@ -138,6 +141,13 @@ const basicStrategy = new BasicStrategy(function(username, password, callback) {
 passport.use(basicStrategy);
 router.use(passport.initialize());
 
+/*passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+})*/
+
 router.post('/signIn',
   passport.authenticate('basic', {session: false}),
   (req, res) => {
@@ -147,14 +157,17 @@ router.post('/signIn',
   }
 );
 
+
+
 /*passport.serializeUser(function(user, done) {
   done(null, user);
 });
 passport.deserializeUser(function(user, done) {
   done(null, user);
-});
-router.post('/signIn', (req, res, next) => {
-  passport.authenticate('basic', {session: false}, function(err, user, info){
+});*/
+/*router.post('/signIn', (req, res, next) => {
+	console.log('attempt')
+  passport.authenticate('basic', function(err, user, info){
   	console.log('attempting')
     if(err){ 
     	console.log('err 1')
@@ -175,8 +188,18 @@ router.post('/signIn', (req, res, next) => {
       res.redirect('/')
     })
     console.log('err 6')
-  })(function(){res.json({user: req.user.apiRepr()})})
+  })(res,res, function(){
+  	console.log('sign In is firing')
+  	console.log(req.body)
+  	res.json({user: req.user.apiRepr()})
+  })
 })*/
 
+router.get('/logout', function(req, res) {
+  req.logout();
+  res.status(200).json({
+    status: 'Bye!'
+  });
+});
 
 module.exports = {router};

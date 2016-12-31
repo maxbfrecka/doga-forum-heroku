@@ -25,6 +25,9 @@
 		<li id="navbar_links" ng-style="{'background-color': navColor1, 'color': navColor7}"><a class="navbarLink" href="/catalog">CATALOG</a></li>
 		<li id="navbar_links" ng-style="{'background-color': navColor3, 'color': navColor9}"><a class="navbarLink" href="/artists">ARTISTS</a></li>
 		<li id="navbar_links" ng-style="{'background-color': navColor4, 'color': navColor10}"><a class="navbarLink"  href="/createArtist/">CREATE ARTIST</a></li>
-		<li id="navbar_links" ng-style="{'background-color': navColor5, 'color': navColor11}"><a class="navbarLink" href="/login">LOG IN / SIGN UP</a></li>
+		<li ng-if="!isLogged" id="navbar_links" ng-style="{'background-color': navColor5, 'color': navColor11}"><a class="navbarLink" href="/login">LOG IN / SIGN UP</a></li>
+		<li ng-if="isLogged" id="navbar_links" ng-style="{'background-color': navColor5, 'color': navColor11}"><a class="navbarLink" ng-click="logOut()">LOG OUT</a></li>
+		<li ng-if="isLogged" id="navbar_links" ng-style="{'background-color': navColor5, 'color': navColor11}"><a class="navbarLink" ng-click="logOut()">{{username}}</a></li>
+
 	</ul>
 </div>

@@ -1,3 +1,33 @@
+When user logs in, displays their SN in the top right corner as link to their user profile
+also when they post on the forum, it puts in their username!
+when they click logout, they logout
+all of this is secure.
+so nobody can just edit their session to say they are a specific user!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 I want people to have screennames and accounts to upload their albums.
 I want eventually an ability to customize their album/artist pages
 They create an artist when they are logged in

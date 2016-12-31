@@ -1,6 +1,6 @@
 angular.module('newPost', ['firebase'])
 
-.directive('mxNewPost', [function(){
+.directive('mxNewPost', ['auth', function(auth){
 	return {
 		restrict: 'E',
 	  templateUrl: 'newPost/new-post.html',
@@ -23,7 +23,7 @@ angular.module('newPost', ['firebase'])
         else {
         // save the thread
           console.log('it might be')
-          var _OPID = make_randID();
+          const _OPID = make_randID();
 
           //array of threads containing thread objects
           //thread object contains array of posts
@@ -40,15 +40,23 @@ angular.module('newPost', ['firebase'])
               _sendImage=vm.sendImage
             }*/
 
-            var _datesort = new Date().getTime()
-            var _datesortMain = new Date().getTime()
+          const _datesort = new Date().getTime()
+          const _datesortMain = new Date().getTime()
+          var userName = ''
+
+          if(auth.isLogged){
+            userName = auth.username
+          } else{
+            userName = 'anonymous'
+          }
+
 
           vm.threads.$add({
             OPID: _OPID,
             posts: [{
               ID: _OPID,
               canvasID: _OPID+"cID",
-              userName: 'anonymous',
+              userName: userName,
               datetime: post_time(),
               datesort: new Date().getTime(),
               datesortMain: new Date().getTime(),

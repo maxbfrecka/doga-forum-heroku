@@ -1,6 +1,6 @@
 angular.module('thread',[])
 
-.directive('mxThread', ['testData', '$routeParams', 'newReplyClick', 'threadData', 'replyData', '$location', '$timeout', '$interval', function(testData, $routeParams, newReplyClick, threadData, replyData, $location, $timeout, $interval){
+.directive('mxThread', ['testData', '$routeParams', 'newReplyClick', 'threadData', 'replyData', '$location', '$timeout', '$interval', 'auth', function(testData, $routeParams, newReplyClick, threadData, replyData, $location, $timeout, $interval, auth){
 	return {
 		restrict: 'E',
 	  templateUrl: 'thread/thread.html',
@@ -102,11 +102,18 @@ angular.module('thread',[])
 						//assists in moving page to correct ID at bottom
 						newReplyID = make_randID()
 
+						var userName = ''
+	          if(auth.isLogged){
+	            userName = auth.username
+	          } else{
+	            userName = 'anonymous'
+	          }
+
             tc.replies.$add(
             {
             		OPID: tc.currentID,
                 ID: newReplyID,
-                userName: 'anonymous',
+                userName: userName,
                 datetime: post_time(),
                 datesort: new Date().getTime(),
                 content: send.reply.trim(),

@@ -29,6 +29,7 @@
     "angular-audio": "^1.7.3"
   },
   "resolutions": {
-    "angular": "^1.5.9"
+    "angular": "^1.5.9",
+    "ngstorage": "^0.4.2"
   }
 }
